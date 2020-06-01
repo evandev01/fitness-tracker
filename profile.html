@@ -33,9 +33,9 @@
         <label for="end-weight">End goal Weight(lbs):</label>
         <input type="text" class="form-control" id="end-weight">
     </div>
-    <p>click submit to calculate your daily calorie target!</p>
+    <p>click calculate to view your daily calorie target!</p>
     <button type="submit" class="btn btn-default" id="run-calculation">
-        <i class="submit"></i> Caluclate</button>
+        <i class="submit"></i> Calculate</button>
 
     <div class="daily-calories"></div>
    
@@ -60,14 +60,28 @@
   var calorieIntake=(66.473+(6.23*startWeight)+(12.7*inches)-(6.8*age)*activity,(655+(4.35*+startWeight)+(4.7*inches)-(4.7*age))*activity);
 
 // if and else statement the calulates target calories intake based on if the user wants to maintain, lose or gain.
-  if (goal==="gain"){
-     var dailyCalorieIntake=calorieIntake+100;
-  }else if(goal==="lose"){
-     var dailyCalorieIntake=calorieIntake-100;
-  }
-  else if (goal==="maintain"){
-      var dailyCalorieIntake=calorieIntake;
-  };
+    if (goal==="gain"){
+        var dailyCalorieIntake=calorieIntake+100;
+    }else if(goal==="lose"){
+        var dailyCalorieIntake=calorieIntake-100;
+    }
+    else if (goal==="maintain"){
+        var dailyCalorieIntake=calorieIntake;
+    };
+
+  
+//   if else statement to prevent calculation if any input is blank for acurate calculation 
+    if (age,startWeight,inches,endWeight===""){
+        $(".daily-calories").text("Error fields cannot be blank");
+        calorieIntake="";
+        dailyCalorieIntake="";
+        goal= "";
+
+    }else {
+        // adding the calculation on the
+        $(".daily-calories").text("Your daily calorie intake is: "+dailyCalorieIntake.toFixed(0));
+    }
+
 
 
   console.log(calorieIntake);
@@ -78,8 +92,6 @@
   console.log(dailyCalorieIntake);
 
 
-// adding the calculation on the webpage
-  $(".daily-calories").text("Your daily calorie intake is: "+dailyCalorieIntake.toFixed(0));
 
 
 
