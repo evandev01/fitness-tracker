@@ -1,0 +1,23 @@
+Title: Fitness Tracker
+
+Description: Application to set and track fitness goals.
+
+User story:
+User is interested in setting and tracking fitness goals.
+User will be able to:
+1) Enter current weight
+2) Track weight
+3) Develop workout regimens
+4) Track workouts
+5) Enter calorie intake
+6) Set goal for weight
+7) Goal will calculate how many days left until goal is acheived
+
+API:
+1)REST
+2)Moment
+3)Tailwind
+4)Font Awesome
+
+
+
