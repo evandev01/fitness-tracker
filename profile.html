@@ -52,7 +52,7 @@
     var age=$("#age").val().trim();
     var startWeight=$("#weight").val().trim();
     var inches=$("#height").val().trim();
-    var activity=1.45;
+    var activity=1.35;
     var goal=$("#goal").val().trim();
     var endWeight=$("#end-weight").val().trim();
     
@@ -61,9 +61,9 @@
 
 // if and else statement the calulates target calories intake based on if the user wants to maintain, lose or gain.
     if (goal==="gain"){
-        var dailyCalorieIntake=calorieIntake+100;
+        var dailyCalorieIntake=calorieIntake+350;
     }else if(goal==="lose"){
-        var dailyCalorieIntake=calorieIntake-100;
+        var dailyCalorieIntake=calorieIntake-450;
     }
     else if (goal==="maintain"){
         var dailyCalorieIntake=calorieIntake;
