@@ -45,11 +45,10 @@
 <script type="text/javascript">
 
 
-var num=5
 
-console.log(num-2);
-
+// added a click function for calulate button 
   $("#run-calculation").on("click", function(event){
+    // created variables for each user input 
     var age=$("#age").val().trim();
     var startWeight=$("#weight").val().trim();
     var inches=$("#height").val().trim();
@@ -57,9 +56,10 @@ console.log(num-2);
     var goal=$("#goal").val().trim();
     var endWeight=$("#end-weight").val().trim();
     
-
+//formula to calculate maintenance calories which are calories the body need in order to function properly based on the factors selected above by the user
   var calorieIntake=(66.473+(6.23*startWeight)+(12.7*inches)-(6.8*age)*activity,(655+(4.35*+startWeight)+(4.7*inches)-(4.7*age))*activity);
 
+// if and else statement the calulates target calories intake based on if the user wants to maintain, lose or gain.
   if (goal==="gain"){
      var dailyCalorieIntake=calorieIntake+100;
   }else if(goal==="lose"){
@@ -77,6 +77,8 @@ console.log(num-2);
   console.log(goal);
   console.log(dailyCalorieIntake);
 
+
+// adding the calculation on the webpage
   $(".daily-calories").text("Your daily calorie intake is: "+dailyCalorieIntake.toFixed(0));
 
 
