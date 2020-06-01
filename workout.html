@@ -4,20 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
 </head>
 <body>
 <!-- maybe add run -->
-<h2>Front or Back</h2>
-<button id="front">Front</button>
-<button id="back">Back</button>
-<br>
-<h2> Front Muscles</h2>
-<button>Front muscle Name</button>
-<h2>Back Muscles</h2>
-<button>Back muscule name</button>
-<h2>Work Muscles</h2>
-<h2>Workouts</h2>
-<ul>
+<h2>Upper Body or Lower Body</h2>
+<button id="upperBody">Upper Body</button>
+<button id="lowerBody">Lower Body</button>
+<div id="muscleGroup">
+
+</div>
+
+<ul id="workouts">
     <li>Workout1</li>
         <p>Workout Details</p>
     <li>Workout2</li>
@@ -29,6 +27,8 @@
 
 </ul>
 
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script >
     // Work API source
@@ -38,38 +38,144 @@
     // Workouts approved by API 
     var status = "&status=2"
     var frontBack = true
-
+    var muscle = 1
     var id = 74
+    var armsLegs = "arms"
+
+    var arms = [{apiName:"Biceps brachii",
+                userName:"Bicep",
+                muscleid: "1",
+                frontBack: true},
+                {apiName: "Anterior deltoid",
+                userName: "Shoulder",
+                muscleid: 2,
+                frontBack: true},
+                {apiName: "Brachialis",
+                userName: "Brachialis",
+                muscleid: 13,
+                frontBack:true},
+                {apiName: "Latissimus dorsi",
+                userName: "Lats",
+                muscleid: 12,
+                frontBack: false},
+                {apiName: "Obliquus externus abdominis",
+                userName: "Obliquus",
+                muscleid: 14,
+                frontBack: true},
+                {apiName: "Pectoralis major",
+                userName: "Pecks",
+                muscleid: 4,
+                frontBack: true},
+                {apiName: "Rectus abdominis",
+                userName: "Abs",
+                muscleid: 6,
+                frontBack: true},
+                {apiName: "Serratus anterior",
+                userName: "Serratus anterior",
+                muscleid: 3,
+                frontBack: true},
+                {apiName: "Trapezius",
+                userName: "Traps",
+                muscleid: 9,
+                frontBack: false},
+                {apiName: "Triceps brachii",
+                userName: "Triceps",
+                muscleid: 5,
+                frontBack: false}
+]
+var legs = [{apiName: "Biceps femoris",
+                userName: "Thigh",
+                muscleid: 11,
+                frontBack: false},
+                {apiName: "Gastrocnemius",
+                userName: "Gastrocnemius",
+                muscleid: 7,
+                frontBack: false},
+                {apiName: "Gluteus maximus",
+                userName: "Glutes",
+                muscleid: 8,
+                frontBack: false},
+                {apiName: "Quadriceps femoris",
+                userName: "Quads",
+                muscleid: 10,
+                frontBack: true},
+                {apiName: "Soleus",
+                userName: "Calves",
+                muscleid: 15,
+                frontBack: false}
+    ]
+ 
+    
+    createMuclesChoices()
+// Create Muscles Selection
+  function createMuclesChoices(){
+    $("#muscleGroup").empty();
+    if(armsLegs == "arms"){
+      console.log("Good")
+      for(i=0; i < arms.length ;i++){
+        var rowEl = $("<button>")
+        rowEl.attr("value",arms[i].muscleId)
+        rowEl.text(arms[i].userName)
+        $("#muscleGroup").append(rowEl)
+      }
+    }
+    else{
+      console.log("Good")
+      for(i=0; i < legs.length ;i++){
+        var rowEl = $("<button>")
+        rowEl.attr("value",legs[i].muscleId)
+        rowEl.text(legs[i].userName)
+        $("#muscleGroup").append(rowEl)
+      }
+    }
+  };
 
 
-  
+ 
+
 // example muscles=id
 
 
-var queryURL = apiURL+ "exercise/" +language+status+"&muscles=1";
+var queryURL = apiURL+ "exercise/" +language+status+"&muscles="+muscle;
 $.ajax({
     url: queryURL,
     method: "GET",
   }).then(function (response) {
     console.log(response);
     console.log(queryURL);
+    $("#workouts").empty();
 
-    // cylce through 4 random workouts based on length of array
+    // cylce though all workouts based on length
+    for (i=0;i<response.results.length;i++){
+      var workoutName = response.results[i].name;
+      var workoutDetails = response.results[i].description;
+      var workoutId = response.results[i].id;
+      var rowEl = $("<button>");
+      rowEl.attr("workout-ID",workoutId)
+      rowEl.text(workoutName)
+      var workoutDescription = workoutDetails
+      $("#workouts").append(rowEl)
+      rowEl.append(workoutDescription)
+      // getImage(workoutId)
+    }
     
   });
 
-var thumbnailURL = apiURL + "exerciseimage/?is_main=True&id=&muscles=1&category=8&exercise="+id
-$.ajax({
-    url: thumbnailURL,
-    method: "GET",
-  }).then(function (response) {
-    console.log(response);
-    console.log(thumbnailURL)
-    // var thumbnailImage=response.small.url;
-    // console.log(thumbnailImage)
-    
-  });
 
+
+// function getImage(workoutId){
+// var thumbnailURL = apiURL + "exerciseimage/?is_main=True&id=&muscles=1&category=8&exercise="+workoutId
+// $.ajax({
+//     url: thumbnailURL,
+//     method: "GET",
+//   }).then(function (response) {
+//     console.log(response);
+//     console.log(thumbnailURL)
+//     // var thumbnailImage=response.small.url;
+//     // console.log(thumbnailImage)
+    
+//   });
+// };
 
 
 //         // Retreive Workout
@@ -111,41 +217,9 @@ $.ajax({
 //     console.log(response);
 //   });
 
-//     var arms = {apiName:"Biceps brachii",
-//                 userName:"Bicep",
-//                 id = 1,
-//                 frontBack= true;
-//                 apiName: "Anterior deltoid",
-//                 userName: "Shoulder",
-//                 id =2,
-//                 frontBack=true;
-//                 apiName: "Brachialis",
-//                 userName: "Brachialis",
-//                 id = 13,
-//                 frontBack=true;
-//                 apiName: "Latissimus dorsi",
-//                 userName: "Lats",
-//                 id = 12,
-//                 frontBack = false
-                
-
-// }
 
 
-    // var legs = {apiName: "Biceps femoris",
-    //             userName: "Thigh",
-    //             id = 11,
-    //             frontBack = false;
-    //             apiName: "Gastrocnemius",
-    //             userName: "Gastrocnemius",
-    //             id = 7,
-    //             frontBack = false;
-    //             apiName: "Gluteus maximus",
-    //             userName: "Glutes",
-    //             id = 8,
-    //             frontBack = false;
 
-    // }
 
 
 
