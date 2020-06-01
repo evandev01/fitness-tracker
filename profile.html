@@ -26,9 +26,8 @@
     <select id="goal" class="custom-select" aria-labelledby="dropdownMenuButton">
           <option value="gain" selected>gain muscle mass</option>
           <option value="lose">lose weight</option>
+          <option selected value="maintain">maintain weight</option>
         </select>
-        <!-- <option value="maintain">lose weight</option>
-        </select> -->
     </div>
     <div class="form-group">
         <label for="end-weight">End goal Weight(lbs):</label>
@@ -66,9 +65,9 @@ console.log(num-2);
   }else if(goal==="lose"){
      var dailyCalorieIntake=calorieIntake-100;
   }
-//   else if (goal==="maintain"){
-//       var dailyCalorieIntake=calorieIntake;
-//   };
+  else if (goal==="maintain"){
+      var dailyCalorieIntake=calorieIntake;
+  };
 
 
   console.log(calorieIntake);
