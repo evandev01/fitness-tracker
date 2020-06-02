@@ -4,8 +4,11 @@
     margin-right: 40%;
     text-align: center;
 }
-#calculate{
+#calculate,#save-info{
     margin-left: 40%;
     margin-right: 40%;
     text-align: center;
+}
+#next1,#save1{
+    width: 30%;
 }
