@@ -104,7 +104,7 @@
     var startWeight=$("#weight").val().trim();
     var inches=$("#height").val().trim();
     var activity=1.35;
-    var goal=$("#goal").val().trim();
+    var goal=$("#goal").val();
     var endWeight=$("#end-weight").val().trim();
     
 //formula to calculate maintenance calories which are calories the body need in order to function properly based on the factors selected above by the user
@@ -118,7 +118,9 @@
     }
     else if (goal==="maintain"){
         var dailyCalorieIntake=calorieIntake;
-    };
+    }else if (goal==="Choose your option"){
+        $(".daily-calories").text("Error fields cannot be blank");
+    }
 
   
 //   if else statement to prevent calculation if any input is blank for acurate calculation 
