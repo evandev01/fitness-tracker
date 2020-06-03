@@ -1,3 +1,106 @@
+
+
+// city will later be replaced by a user input of current city 
+    var city= "charlotte";
+
+// start of weather API
+    var APIKey="3341ac9d2dd138ac14d34cba050bc29f";
+
+    var queryURL="https://api.openweathermap.org/data/2.5/weather?q="+city+"&appid="+APIKey;
+
+    $.ajax({
+        url:queryURL,
+        method: "GET"
+    }).then(function(response){
+    
+    console.log(response);
+
+    console.log(response.main.temp);
+
+    // tempreature converstion formulat to fahrenheit 
+    var tempFunction=(response.main.temp -273.15)*1.80+32;
+    var temp=tempFunction.toFixed(0);
+
+// adding tempreature to the card at the top
+    $("h6").text("Tempreature: "+temp);
+
+   console.log(temp);
+
+//  adding icon of weather to the card based on the API with conditions 
+   var icon=response.weather[0].main;
+
+   if (icon==="Rain"){
+      $("h3").append($("<img>",{id:"rain",src:"Assets/rain.jpg", width:"50",height:"50"}))
+                
+    }else if (icon==="Clear"){
+      $("h3").append($("<img>",{id:"rain",src:"Assets/sunny.png", width:"50",height:"50"}))
+
+    }else if (icon==="Clouds"){
+      $("h3").append($("<img>",{id:"rain",src:"Assets/cloud.jpg", width:"50",height:"50"}))
+    }
+
+    console.log(icon);
+
+// adding moment js for each block including the main top card 
+
+
+    // today's date 
+    var date=moment().format('LLLL');
+      // added to the main card on top of the page 
+    $("#date").text(date);
+
+
+    // tomorrow's date 
+    var nextDay=moment().add(1, 'days').calendar(); 
+      // added tomorrow's date to the first section day 1 section of html
+    $("#date1").text(nextDay);
+
+
+
+    // date for two days later 
+    var twoDays=moment().add(2, 'days').calendar(); 
+      // added to the second section day 2 section of html
+    $("#date2").text(twoDays);
+    
+    // date for three days later 
+    var threeDays=moment().add(3, 'days').calendar(); 
+      // added to the third section day 3 section of html
+    $("#date3").text(threeDays);
+    
+
+    // date for four days later
+    var fourDays=moment().add(4, 'days').calendar(); 
+      // added to the fourth section 4 section of html
+    $("#date4").text(fourDays);
+    
+
+    // date for five days later
+    var fiveDays=moment().add(5, 'days').calendar(); 
+      // added to the fifth section 5 section of html
+    $("#date5").text(fiveDays);
+    
+
+    // date for six days later
+    var sixDays=moment().add(6, 'days').calendar(); 
+      // added to the sixth section 5 section of html
+    $("#date6").text(sixDays);
+    
+
+    // date for seven days later
+    var sevenDays=moment().add(7, 'days').calendar(); 
+      // added to the seventh section 5 section of html
+    $("#date7").text(sevenDays);
+
+
+    });
+
+
+
+
+
+
+// grpah section of javascript page 
+
 google.charts.load('current', {packages: ['corechart', 'line']});
 google.charts.setOnLoadCallback(drawCurveTypes);
 
