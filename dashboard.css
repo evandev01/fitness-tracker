@@ -2,3 +2,8 @@
 .card-panel small {
     display: inline-block;
 }
+
+#date{
+    text-align: center;
+
+}
