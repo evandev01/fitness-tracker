@@ -6,9 +6,18 @@
     <link rel="stylesheet"  href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
+    <!--Load the AJAX API-->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+
     <!-- Compiled and minified JavaScript -->
+    <script type="text/javascript" src="dashboard.js"></script>
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <title>Document</title>
+    <title>Dashboard</title>
 </head>
 <body>
     <div class="container">
@@ -27,6 +36,53 @@
                   </nav>
             </div>
         </div>
+        <div class="row">
+          <div class="col s2 md3"></div>
+          <div class="col s8 md6">
+            <div class="card medium"></div>
+          </div>
+          <div class="col s2 md3"></div>
+        </div>
+
+        <div class="row">
+          <div class="col s2"></div>
+          <div class="col s8" id="7day-cal">
+            <div class="card-panel small">
+              <span class="black-text">Weekly Calendar</span>
+              <div class="card-panel small">
+                <span class="black-text">Monday</span>
+              </div>
+              <div class="card-panel small">
+                <span class="black-text">Tuesday</span>
+              </div>
+              <div class="card-panel small">
+                <span class="black-text">Wednesday</span>
+              </div>
+              <div class="card-panel small">
+                <span class="black-text">Thursday</span>
+              </div>
+              <div class="card-panel small">
+                <span class="black-text">Friday</span>
+              </div>
+              <div class="card-panel small">
+                <span class="black-text">Saturday</span>
+              </div>
+              <div class="card-panel small">
+                <span class="black-text">Sunday</span>
+              </div>
+            </div>
+            </div>
+            
+            <div class="col s2"></div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col s12">
+      <div id="chart_div"></div>
     </div>
+  </div>
+</div>
+
 </body>
 </html>
