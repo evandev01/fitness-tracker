@@ -90,83 +90,11 @@
         </div>
     </div>
     </div>
-        
-        
-      
-
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> 
-<script type="text/javascript">
-
-// added the click event for the next button to procced to dashboard page
-$("#next").on("click", function(event){
-event.preventDefault();
-window.location.href = "dashboard.html";
-
-
-});
-
-
-
-
-// added a click function for calulate button 
-  $("#run-calculation").on("click", function(event){
-    // created variables for each user input 
-    var age=$("#age").val().trim();
-    var startWeight=$("#weight").val().trim();
-    var inches=$("#height").val().trim();
-    var activity=1.35;
-    var goal=$("#goal").val();
-    var endWeight=$("#end-weight").val().trim();
-    
-//formula to calculate maintenance calories which are calories the body need in order to function properly based on the factors selected above by the user
-  var calorieIntake=(66.473+(6.23*startWeight)+(12.7*inches)-(6.8*age)*activity,(655+(4.35*+startWeight)+(4.7*inches)-(4.7*age))*activity);
-
-// if and else statement the calulates target calories intake based on if the user wants to maintain, lose or gain.
-    if (goal==="gain"){
-        var dailyCalorieIntake=calorieIntake+350;
-    }else if(goal==="lose"){
-        var dailyCalorieIntake=calorieIntake-450;
-    }
-    else if (goal==="maintain"){
-        var dailyCalorieIntake=calorieIntake;
-    }else if (goal==="Choose your option"){
-        $(".daily-calories").text("Error fields cannot be blank");
-    }
-
-  
-//   if else statement to prevent calculation if any input is blank for acurate calculation 
-    if (age,startWeight,inches,endWeight===""){
-        $(".daily-calories").text("Error fields cannot be blank");
-        calorieIntake="";
-        dailyCalorieIntake="";
-        goal= "";
-
-    }else {
-        // adding the calculation on the
-        $(".daily-calories").text("Your daily calorie intake is: "+dailyCalorieIntake.toFixed(0));
-    }
-
-
-
-  console.log(calorieIntake);
-  console.log(age);
-  console.log(startWeight);
-  console.log(inches);
-  console.log(goal);
-  console.log(dailyCalorieIntake);
-
-
-
-
-
-  event.preventDefault();
-
-
-
-
-  });
-
-</script>
-
+<!-- imported Jquery  -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<!-- imported moment js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+<!-- imported the dashboard javascript file  --> 
+<script src="script.js"></script> 
 </body>
 </html>

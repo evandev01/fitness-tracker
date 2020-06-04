@@ -73,52 +73,12 @@
     </div>
     </div>
 
-   
-    
-   
-      
 
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> 
-<script type="text/javascript">
-
-
-// added the click event for the next button to procced to profile page
-$("#next1").on("click", function(event){
-event.preventDefault();
-window.location.href = "profile.html";
-
-
-});
-
-// added a click function for calulate button 
-  $("#save1").on("click", function(event){
-    // created variables for each user input 
-    var name=$("#name").val().trim();
-    var username=$("#username").val().trim();
-    var email=$("#email").val().trim();
-    var password=$("#password").val().trim();
-    var address=$("#city").val().trim();
-    var phone=$("#phone").val().trim();
-
-
-
-
-  console.log(name);
-  console.log(username);
-  console.log(email);
-  console.log(password);
-  console.log(address);
-  console.log(phone);
-
-
-  event.preventDefault();
-
-
-
-
-  });
-
-</script>
-
+<!-- imported Jquery  -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<!-- imported moment js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+<!-- imported the dashboard javascript file  -->
+<script src="script.js"></script> 
 </body>
 </html>
