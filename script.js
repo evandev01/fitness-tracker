@@ -240,6 +240,8 @@
     var dailyWorkoutArray= [];
     var muscleWorkoutArray= [];
 
+
+
     var arms = [{apiName:"Biceps brachii",
                 userName:"Bicep",
                 muscleid: "1",
@@ -307,20 +309,31 @@
     $("#bodyChoices").hide()
     $("#workouts").hide()
 
-
-    // genSavedWorkouts();
-
+    retrieveDailyWorkout()
+    generateDailyWorkout()
+ 
 
     $("#genWorkout").on("click",function(){
+      dailyWorkoutArray = []
+      storeDailyWorkout()
       generateWorkout()
     })
 
+    // Before generate workout function call name workout function. Unhide form for saving workout name and then call generate workout function
 
+    $("#clearDailyWorkout").on("click",function(){
+    dailyWorkoutArray = []
+    console.log("Clear Storage")
+    storeDailyWorkout()
+    generateDailyWorkout()
+    $("#genWorkout").show()
+  })
+
+  
     function generateWorkout(){
     event.preventDefault() 
     $("#genWorkout").hide()
     $("#dailyWorkout").hide()
-    
     $("#bodyChoices").show()
     }
 
@@ -412,6 +425,7 @@ $.ajax({
 
     dailyWorkoutArray.push({workName: wName, workDescription: wDescr})
     console.log(dailyWorkoutArray)
+    storeDailyWorkout()
     generateDailyWorkout()
 
 })
@@ -442,7 +456,45 @@ function generateDailyWorkout (){
     generateWorkout()
     console.log("add new workout")
   })
+  
+function storeDailyWorkout(){
+    localStorage.setItem("dailyWorkoutArray",JSON.stringify(dailyWorkoutArray));
+}
+
+function retrieveDailyWorkout(){
+  dailyWorkoutArray = JSON.parse(localStorage.getItem("dailyWorkoutArray") || "[]")
+}
+
+// Add workout to Dashboard
+addDailyWorkout()
+function addDailyWorkout(){
+  retrieveDailyWorkout();
+  for (i=0; i<dailyWorkoutArray.length; i++) {
+
+    var workoutNameEl = $("<h4>")
+      workoutNameEl.text(dailyWorkoutArray[i].workName)
+    $("#workout").append(workoutNameEl)
+  }
+}
+
+// function saveWorkoutRoutine(){
+
+//   WorkoutRoutineArray.push({workName: "workoutName", workouts: dailyWorkoutArray})
+// }
+
+// function storeWorkoutRoutine(){
+//   localStorage.setItem("WorkoutRoutineArray",JSON.stringify(WorkoutRoutineArray));
+// }
+
+// function retrieveWorkoutRoutine(){
+//   WorkoutRoutineArray = JSON.parse(localStorage.getItem("WorkoutRoutineArray") || "[]")
+// }
+
 
 //   End Generate Workout javascript
+
+
+
+
 
 
