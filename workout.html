@@ -28,29 +28,45 @@
     </div>
 </div>
 <!-- maybe add run -->
-<h2>Upper Body or Lower Body</h2>
-<button id="upperBody">Upper Body</button>
-<button id="lowerBody">Lower Body</button>
-<div id="muscleGroup">
+<button id = "genWorkout">Generate New Workout</button>
+<button id = "addNewWorkout">Add additional workout</button>
+<button id = "clearDailyWorkout">Clear Daily Workout</button>
+<div id = "savedWorkouts">
+
+</div>
+
+<div id = "bodyChoices">
+  <h2>Upper Body or Lower Body</h2>
+  <button id="arms" class = "bodyChoice">Upper Body</button>
+  <button id="legs" class = "bodyChoice">Lower Body</button>
+</div>
+<div id="muscleGroups">
 
 </div>
 
 <ul id="workouts">
-    <li>Workout1</li>
+    <!-- <li>Workout1</li>
         <p>Workout Details</p>
     <li>Workout2</li>
         <p>Workout Details</p>
     <li>Workout3</li>
         <p>Workout Details</p>
     <li>Workout4</li>
-        <p>Workout Details</p>
+        <p>Workout Details</p> -->
 
 </ul>
+
+<div id="dailyWorkout">
+
+
+</div>
+
+
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script >
+    <script>
     // Work API source
     var apiURL = "https://wger.de/api/v2/"
     // Chooses English language
@@ -58,9 +74,13 @@
     // Workouts approved by API 
     var status = "&status=2"
     var frontBack = true
-    var muscle = 1
+    var muscleId = 1
     var id = 74
-    var armsLegs = "arms"
+    var armLegIndictor = ""
+    var muscleWorkArrayId = 1
+
+    var dailyWorkoutArray= [];
+    var muscleWorkoutArray= [];
 
     var arms = [{apiName:"Biceps brachii",
                 userName:"Bicep",
@@ -103,7 +123,7 @@
                 muscleid: 5,
                 frontBack: false}
 ]
-var legs = [{apiName: "Biceps femoris",
+    var legs = [{apiName: "Biceps femoris",
                 userName: "Thigh",
                 muscleid: 11,
                 frontBack: false},
@@ -125,38 +145,78 @@ var legs = [{apiName: "Biceps femoris",
                 frontBack: false}
     ]
  
+    $("#muscleGroups").hide()
+    $("#bodyChoices").hide()
+    $("#workouts").hide()
+
+
+    // genSavedWorkouts();
+
+
+    $("#genWorkout").on("click",function(){
+      generateWorkout()
+    })
+
+
+    function generateWorkout(){
+    event.preventDefault() 
+    $("#genWorkout").hide()
+    $("#dailyWorkout").hide()
     
-    createMuclesChoices()
+    $("#bodyChoices").show()
+    }
+
+    // createMuclesChoices()
 // Create Muscles Selection
+
+$(".bodyChoice").on("click",function(){
+    event.preventDefault();  
+    $("#bodyChoices").hide();
+    $("#muscleGroups").show();
+    armLegIndictor = $(this).attr("id")
+    console.log(armLegIndictor)
+    createMuclesChoices();
+})
+
+
   function createMuclesChoices(){
-    $("#muscleGroup").empty();
-    if(armsLegs == "arms"){
-      console.log("Good")
+    $("#muscleGroups").empty();
+    if(armLegIndictor == "arms"){
+      console.log("arms")
       for(i=0; i < arms.length ;i++){
         var rowEl = $("<button>")
-        rowEl.attr("value",arms[i].muscleId)
+        rowEl.addClass("muscleGroup")
+        rowEl.attr("muscleId",arms[i].muscleid)
         rowEl.text(arms[i].userName)
-        $("#muscleGroup").append(rowEl)
+        $("#muscleGroups").append(rowEl)
       }
     }
     else{
-      console.log("Good")
+      console.log("legs")
       for(i=0; i < legs.length ;i++){
         var rowEl = $("<button>")
-        rowEl.attr("value",legs[i].muscleId)
+        rowEl.addClass("muscleGroup")
+        rowEl.attr("muscleId",legs[i].muscleid)
         rowEl.text(legs[i].userName)
-        $("#muscleGroup").append(rowEl)
+        $("#muscleGroups").append(rowEl)
       }
     }
+    $(".muscleGroup").on("click",function(){
+    event.preventDefault();  
+    $("#muscleGroup").hide();
+    $("#workouts").show();
+    muscleId = $(this).attr("muscleId");
+    console.log(muscleId)
+    generateMuscleWorkout()
+    
+  })
+
   };
-
-
- 
 
 // example muscles=id
 
-
-var queryURL = apiURL+ "exercise/" +language+status+"&muscles="+muscle;
+function generateMuscleWorkout (){
+var queryURL = apiURL+ "exercise/" +language+status+"&muscles="+muscleId;
 $.ajax({
     url: queryURL,
     method: "GET",
@@ -164,6 +224,7 @@ $.ajax({
     console.log(response);
     console.log(queryURL);
     $("#workouts").empty();
+    muscleWorkoutArray = []
 
     // cylce though all workouts based on length
     for (i=0;i<response.results.length;i++){
@@ -171,15 +232,76 @@ $.ajax({
       var workoutDetails = response.results[i].description;
       var workoutId = response.results[i].id;
       var rowEl = $("<button>");
-      rowEl.attr("workout-ID",workoutId)
+      rowEl.addClass("indWorkout")
+      rowEl.attr("workoutID",i)
       rowEl.text(workoutName)
       var workoutDescription = workoutDetails
       $("#workouts").append(rowEl)
-      rowEl.append(workoutDescription)
+      rowEl.after(workoutDescription)
+      muscleWorkoutArray.push({workoutName:workoutName,workoutDescription:workoutDetails}) 
+
       // getImage(workoutId)
     }
-    
+    console.log(muscleWorkoutArray)
+    $(".indWorkout").on("click",function(){
+    event.preventDefault();  
+    // $("#workouts").hide();
+     muscleWorkArrayId = $(this).attr("workoutID");
+     console.log(muscleWorkArrayId)
+     var wName = muscleWorkoutArray[muscleWorkArrayId].workoutName
+     var wDescr = muscleWorkoutArray[muscleWorkArrayId].workoutDescription
+
+
+    dailyWorkoutArray.push({workName: wName, workDescription: wDescr})
+    console.log(dailyWorkoutArray)
+    generateDailyWorkout()
+
+})
   });
+}
+
+
+function generateDailyWorkout (){
+  $("#muscleGroups").hide();
+  $("#workouts").hide();
+  $("#dailyWorkout").show();
+  $("#dailyWorkout").empty();
+
+
+  for (i=0; i<dailyWorkoutArray.length; i++) {
+
+    var workoutNameEl = $("<h4>")
+      workoutNameEl.text(dailyWorkoutArray[i].workName)
+    var workoutDescriptionEl = dailyWorkoutArray[i].workDescription
+    $("#dailyWorkout").append(workoutNameEl)
+    workoutNameEl.after(workoutDescriptionEl)
+
+  }
+
+
+
+
+
+  }
+
+  $("#addNewWorkout").on("click",function(){
+    generateWorkout()
+    console.log("add new workout")
+  })
+
+
+//   function storeDailyworkout(){
+//     localStorage.setItem("dailyWorkoutArray",JSON.stringify(dailyWorkoutArray));
+// }
+
+// function retrieveDailyworkout(){
+//   dailyWorkoutArray = JSON.parse(localStorage.getItem("dailyWorkoutArray") || "[]")
+// }
+
+// if(dailyWorkoutArray == null){
+//   retrieveDailyworkout()
+// }
+
 
 
 
