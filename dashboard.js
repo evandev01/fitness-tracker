@@ -3,34 +3,63 @@
 
 google.charts.load('current', {packages: ['corechart', 'line']});
 google.charts.setOnLoadCallback(drawBasic);
+var graphDetails = []
+// add local storage to get profile Array
+var profile = {startWeight: 200,
+goalWeight:180,
+timeFrame:60}
+var startWeight = profile.startWeight
+var goalWeight = profile.goalWeight
+var timeFrame = profile.timeFrame
+var lossDay = (startWeight - goalWeight)/timeFrame
+// add local storage to create weightJournal based on user inputted weights
+var weighthJournal = [{entryDay: 10,weight:195},
+{entryDay:20,weight:190},
+{entryDay:30,weight:185}]
+
+var weightEntryID = 0
+var userWeight = startWeight
+var dayInput = weighthJournal[0].entryDay
+
+// Creates array for Graph Details using User profile and weight journal
+for(i=0;i<timeFrame;i++){
+  console.log(dayInput)
+  
+  if(i === dayInput){
+    userWeight = weighthJournal[weightEntryID].weight
+    weightEntryID++
+    if(weightEntryID = weighthJournal.length){
+      weightEntryID = weighthJournal.length -1
+    }
+    dayInput = weighthJournal[weightEntryID].entryDay
+  }
+
+  // add momement function to change i to date
+  graphDetails.push([i,startWeight,userWeight])
+  startWeight = startWeight - lossDay
+}
+
 
 function drawBasic() {
 
       var data = new google.visualization.DataTable();
       data.addColumn('number', 'X');
       data.addColumn('number', 'Goal');
+      data.addColumn('number', 'Actual');
+      data.ready
+           
 
-      data.addRows([
-        [0, 0],   [1, 10],  [2, 23],  [3, 17],  [4, 18],  [5, 9],
-        [6, 11],  [7, 27],  [8, 33],  [9, 40],  [10, 32], [11, 35],
-        [12, 30], [13, 40], [14, 42], [15, 47], [16, 44], [17, 48],
-        [18, 52], [19, 54], [20, 42], [21, 55], [22, 56], [23, 57],
-        [24, 60], [25, 50], [26, 52], [27, 51], [28, 49], [29, 53],
-        [30, 55], [31, 60], [32, 61], [33, 59], [34, 62], [35, 65],
-        [36, 62], [37, 58], [38, 55], [39, 61], [40, 64], [41, 65],
-        [42, 63], [43, 66], [44, 67], [45, 69], [46, 69], [47, 70],
-        [48, 72], [49, 68], [50, 66], [51, 65], [52, 67], [53, 70],
-        [54, 71], [55, 72], [56, 73], [57, 75], [58, 70], [59, 68],
-        [60, 64], [61, 60], [62, 65], [63, 67], [64, 68], [65, 69],
-        [66, 70], [67, 72], [68, 75], [69, 80]
-      ]);
+      console.log(graphDetails)
+      data.addRows(
+       graphDetails
+      );
 
       var options = {
         hAxis: {
           title: 'Time'
         },
         vAxis: {
-          title: 'Progress'
+          title: 'Weight'
         }
       };
 
