@@ -23,7 +23,7 @@ var accountInfo=[];
             var password=$("#password").val().trim();
             var address=$("#city").val().trim();
             var phone=$("#phone").val().trim();
-          accountInfo.push(name,username,email,password,address,phone);
+          accountInfo.push({name:name,userName:username,email:email,password:password,address:address,phone:phone});
 
           // saved in local storage under accountInfo
           localStorage.setItem("accountInfo",JSON.stringify(accountInfo));
@@ -95,7 +95,7 @@ var accountInfo=[];
         
         
             // saving profile info to local storage
-            profileInfo.push(age,startWeight,inches,endWeight,goal,dailyCalorieIntake)
+            profileInfo.push({age:age,startWeight:startWeight,height:inches,goalWeight:endWeight,goal:goal,calories:dailyCalorieIntake})
             localStorage.setItem("profileInfo",JSON.stringify(profileInfo));
         
         
