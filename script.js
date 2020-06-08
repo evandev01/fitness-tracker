@@ -116,6 +116,7 @@ var accountInfo=[];
 
         var cityArray=[];
         var weeklyCalender=[];
+        var currentWeight=[];
         retrieveCity();
         storeCity();
        
@@ -234,7 +235,19 @@ var accountInfo=[];
 
         });
 
-        // still need to set the current weight to local storage, waiting to talk it over with the team to tie it in with the graph
+        // local storage for update weight section below 
+
+          $("#update-weight").on("click",function(event){
+            currentWeight=[];
+          event.preventDefault();
+          var updatedWeight= $("#current-weight").val().trim();
+          currentWeight.push(updatedWeight);
+          localStorage.setItem("currentWeight",JSON.stringify(currentWeight));
+
+    
+        });
+
+ 
 
 
 
