@@ -2,6 +2,7 @@
 // javascript includes user input to set up user account (name, username, password,email,city and phone number)
 // city variable input by user will be used for weather api located on the dashboard
 
+var accountInfo=[];
 
     // added the click event for the next button to procced to profile page
     $("#next1").on("click", function(event){
@@ -13,6 +14,8 @@
         
         // added a click function for calulate button 
         $("#save1").on("click", function(event){
+          accountInfo=[];
+          event.preventDefault();
             // created variables for each user input 
             var name=$("#name").val().trim();
             var username=$("#username").val().trim();
@@ -20,21 +23,11 @@
             var password=$("#password").val().trim();
             var address=$("#city").val().trim();
             var phone=$("#phone").val().trim();
-        
-        
-        
-        
-        console.log(name);
-        console.log(username);
-        console.log(email);
-        console.log(password);
-        console.log(address);
-        console.log(phone);
-        
-        
-        event.preventDefault();
-        
-        
+          accountInfo.push(name,username,email,password,address,phone);
+
+          // saved in local storage under accountInfo
+          localStorage.setItem("accountInfo",JSON.stringify(accountInfo));
+  
         
         
         });
@@ -51,7 +44,10 @@
 // PROFILE PAGE 
 // javascript includes users input to calculate target daily calorie intake (age,weight,height,goal,end-weight ==target calorie intake calculator)
     // added the click event for the next button to procced to dashboard page
-    $("#next").on("click", function(event){
+
+    var profileInfo= [];
+
+        $("#next").on("click", function(event){
         event.preventDefault();
         window.location.href = "dashboard.html";
         
@@ -59,10 +55,10 @@
         });
         
         
-        
-        
         // added a click function for calulate button 
         $("#run-calculation").on("click", function(event){
+          profileInfo=[];
+          event.preventDefault();
             // created variables for each user input 
             var age=$("#age").val().trim();
             var startWeight=$("#weight").val().trim();
@@ -70,6 +66,8 @@
             var activity=1.35;
             var goal=$("#goal").val();
             var endWeight=$("#end-weight").val().trim();
+     
+
             
         //formula to calculate maintenance calories which are calories the body need in order to function properly based on the factors selected above by the user
         var calorieIntake=(66.473+(6.23*startWeight)+(12.7*inches)-(6.8*age)*activity,(655+(4.35*+startWeight)+(4.7*inches)-(4.7*age))*activity);
@@ -101,19 +99,12 @@
             }
         
         
-        
-        console.log(calorieIntake);
-        console.log(age);
-        console.log(startWeight);
-        console.log(inches);
-        console.log(goal);
-        console.log(dailyCalorieIntake);
+            // saving profile info to local storage
+            profileInfo.push(age,startWeight,inches,endWeight,goal,dailyCalorieIntake)
+            localStorage.setItem("profileInfo",JSON.stringify(profileInfo));
         
         
-        
-        
-        
-        event.preventDefault();
+
         
         
         
