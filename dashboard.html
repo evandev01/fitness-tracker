@@ -42,6 +42,13 @@
         <div class="row">
           <div class="col s2 md3"></div>
           <div class="col s8 md6">
+               <!-- city search for weather api -->
+               <form id="city-form">
+                <label for="city-input">Search your City for the weather: </label>
+                <input type="text" class="form-control" id="city-input"><button type="submit" class="btn btn-default" id="select-city">
+                <i class="search"></i> search</button>
+                <div id="city-list"></div>
+              </form>
             <div class="card medium">
               <div id=date>
                 <!-- todays date goes here moment.js -->
@@ -65,54 +72,75 @@
               <span class="black-text">Weekly Calendar</span>
               <div class="card-panel small">
                 <span class="black-text">
-                  <div id=date1>
-                    <!-- tomorrows date goes here moment.js -->
+                  <div id="monday">
+                    Monday
                   </div>
+                  <!-- user input for monday goes below-->
+                  <textarea id="mon"></textarea>
                 </span>
               </div>
               <div class="card-panel small">
                 <span class="black-text">
-                  <div id=date2>
-                    <!-- date for two days later goes here moment.js -->
+                  <div id="tuesday">
+                   Tuesday
                   </div>
+                  <!-- user input for tuesday goes below -->
+                  <textarea id="tue"></textarea>
                 </span>
               </div>
               <div class="card-panel small">
                 <span class="black-text">
-                  <div id=date3>
-                    <!-- date for three days later goes here moment.js -->
-
+                  <div id="wednesday">
+                    Wednesday
                   </div>
+                  <!-- user input for wednesday goes below-->
+                  <textarea id="wed"></textarea>
                 </span>
               </div>
               <div class="card-panel small">
                 <span class="black-text">
-                  <div id=date4>
-                    <!-- date for four days later goes here moment.js -->
+                  <div id="thursday">
+                    Thursday
                   </div>
+                  <!-- user input for thursday goes below -->
+                  <textarea id="thur"></textarea>
                 </span>
               </div>
               <div class="card-panel small">
                 <span class="black-text">
-                  <div id=date5>
-                    <!-- date for five days later goes here moment.js -->
+                  <div id="friday">
+                    Friday
                   </div>
+                  <!-- user input for friday goes below -->
+                  <textarea id="fri"></textarea>
                 </span>
               </div>
               <div class="card-panel small">
                 <span class="black-text">
-                  <div id=date6>
-                    <!-- date for six days later goes here moment.js -->
+                  <div id="saturday">
+                    Saturday
                   </div>
+                  <!-- user input for saturday goes below -->
+                  <textarea id="sat"></textarea>
                 </span>
               </div>
               <div class="card-panel small">
                 <span class="black-text">
-                  <div id=date7>
-                    <!-- date for seven days later goes here moment.js -->
+                  <div id="sunday">
+                    Sunday
                   </div>
+                  <!-- user input for sunday goes below -->
+                  <textarea id="sun"></textarea>
                 </span>
               </div>
+              <!-- save button for the weekly calender below -->
+              <p>Save your weekly calender below!</p>
+              <button type="submit" class="btn btn-default" id="saveWeekly">
+              <i class="save"></i> save</button><br><br>
+              <!-- current weight update button below -->
+              <label for="current-weight">Weight(lbs):</label>
+              <input type="text" class="form-control" id="current-weight"><button type="submit" class="btn btn-default" id="update">
+              <i class="update"></i> update weight</button>
             </div>
             </div>
             
