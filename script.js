@@ -36,11 +36,6 @@ var accountInfo=[];
 
 
 
-
-
-
-
-
 // PROFILE PAGE 
 // javascript includes users input to calculate target daily calorie intake (age,weight,height,goal,end-weight ==target calorie intake calculator)
     // added the click event for the next button to procced to dashboard page
@@ -102,11 +97,6 @@ var accountInfo=[];
             // saving profile info to local storage
             profileInfo.push(age,startWeight,inches,endWeight,goal,dailyCalorieIntake)
             localStorage.setItem("profileInfo",JSON.stringify(profileInfo));
-        
-        
-
-        
-        
         
         
         });
@@ -239,7 +229,6 @@ var accountInfo=[];
           var sat= $("#sat").val().trim();
           var sun= $("#sun").val().trim();
           weeklyCalender.push(mon,tue,wed,thur,fri,sat,sun);
-          renderCalender;
           localStorage.setItem("weeklyCalender",JSON.stringify(weeklyCalender));
          
 
