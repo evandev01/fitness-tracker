@@ -42,9 +42,12 @@ var accountInfo=[];
 
     var profileInfo= [];
 
+    retrieveCalories()
+
         $("#next").on("click", function(event){
         event.preventDefault();
         window.location.href = "dashboard.html";
+        storeCalories()
         
         
         });
@@ -62,6 +65,7 @@ var accountInfo=[];
             var goal=$("#goal").val();
             var endWeight=$("#end-weight").val().trim();
             var goalTime=$("#goalDays").val().trim();
+            storeCalories()
      
 
             
@@ -95,16 +99,57 @@ var accountInfo=[];
             }
 
             var startDate=moment().format('LLLL');
+
+            
         
         
             // saving profile info to local storage
             profileInfo.push({age:age,startWeight:startWeight,height:inches,goalWeight:endWeight,goal:goal,calories:dailyCalorieIntake, goalTime:goalTime,startDate:startDate})
-            localStorage.setItem("profileInfo",JSON.stringify(profileInfo));
+
+            storeCalories()
+            
 
            
-        
-        
         });
+
+
+        function storeCalories(){
+          localStorage.setItem("profileInfo",JSON.stringify(profileInfo));
+      }
+      
+      function retrieveCalories(){
+        profileInfo = JSON.parse(localStorage.getItem("profileInfo") || "[]")
+      }
+
+      addCalories()
+      function addCalories(){
+        retrieveCalories();
+        var caloriesPost= $("<h8>");
+        caloriesPost.text("Calories: "+profileInfo[0].calories.toFixed(0))
+        $("#calories").append(caloriesPost)
+
+        
+      }
+
+
+      addStartWeight()
+      function addStartWeight(){
+        retrieveCalories();
+        var startWeightPost= $("<h8>");
+        startWeightPost.text("Start Weight: "+profileInfo[0].startWeight)
+        $("#current-weight").append(startWeightPost)
+
+        
+      }
+      addGoalWeight()
+      function addGoalWeight(){
+        retrieveCalories();
+        var goalWeightPost= $("<h8>");
+        goalWeightPost.text("Goal Weight: "+profileInfo[0].goalWeight)
+        $("#goal-weight").append(goalWeightPost)
+
+        
+      }
 
 // end of profile javascript
 
@@ -115,7 +160,7 @@ var accountInfo=[];
 
 
         // today's date 
-        var date=moment().format('LLLL');
+        var date=moment().format('L');
         // added to the main card on top of the page 
         $("#date").text(date);
 
@@ -124,6 +169,7 @@ var accountInfo=[];
         var currentWeight=[];
         retrieveCity();
         storeCity();
+        retrieveCalender();
        
 
     function searchCity(city){
@@ -172,7 +218,7 @@ var accountInfo=[];
 
     };
 
-
+        // 
         function storeCity (){
           localStorage.setItem("cityArray",JSON.stringify(cityArray));
         }
@@ -191,6 +237,7 @@ var accountInfo=[];
               c.text(cityArray[i]);
               $("#city-list").append(c);
               storeCity();
+              storeCalender()
           };
         };
 
@@ -205,6 +252,7 @@ var accountInfo=[];
           // addCityList();
           $("h3").empty();
           storeCity();
+          storeCalender()
         });
 
 
@@ -218,6 +266,7 @@ var accountInfo=[];
           renderButtons();
           $("h3").empty();
           storeCity();
+          storeCalender()
   
         });
 
@@ -234,8 +283,9 @@ var accountInfo=[];
           var fri= $("#fri").val().trim();
           var sat= $("#sat").val().trim();
           var sun= $("#sun").val().trim();
-          weeklyCalender.push(mon,tue,wed,thur,fri,sat,sun);
+          weeklyCalender.push({monday:mon,tuesday:tue,wednesday:wed,thursday:thur,friday:fri,saturday:sat,sunday:sun});
           localStorage.setItem("weeklyCalender",JSON.stringify(weeklyCalender));
+          storeCalender()
          
 
         });
@@ -248,9 +298,61 @@ var accountInfo=[];
           var updatedWeight= $("#current-weight").val().trim();
           currentWeight.push(updatedWeight);
           localStorage.setItem("currentWeight",JSON.stringify(currentWeight));
+          storeCalender()
 
     
         });
+        
+        function storeCalender (){
+          localStorage.setItem("weeklyCalender",JSON.stringify(weeklyCalender));
+        }
+    
+        function retrieveCalender(){
+          weeklyCalender=JSON.parse(localStorage.getItem("weeklyCalender")||"[]");
+        }
+
+        addCalender()
+        function addCalender(){
+          retrieveCalender();
+          var weekPostMon= $("<textarea>");
+          weekPostMon.attr("type","text")
+          weekPostMon.text(weeklyCalender[0].monday)
+          $("#mon").append(weekPostMon)
+
+          var weekPostTue= $("<textarea>");
+          weekPostTue.attr("type","text")
+          weekPostTue.text(weeklyCalender[0].tuesday)
+          $("#tue").append(weekPostTue)
+
+          var weekPostWed= $("<textarea>");
+          weekPostWed.attr("type","text")
+          weekPostWed.text(weeklyCalender[0].wednesday)
+          $("#wed").append(weekPostWed)
+
+          var weekPostThur= $("<textarea>");
+          weekPostThur.attr("type","text")
+          weekPostThur.text(weeklyCalender[0].thursday)
+          $("#thur").append(weekPostThur)
+
+          var weekPostFri= $("<textarea>");
+          weekPostFri.attr("type","text")
+          weekPostFri.text(weeklyCalender[0].friday)
+          $("#fri").append(weekPostFri)
+
+          var weekPostSat= $("<textarea>");
+          weekPostSat.attr("type","text")
+          weekPostSat.text(weeklyCalender[0].saturday)
+          $("#sat").append(weekPostSat)
+
+
+          var weekPostSun= $("<textarea>");
+          weekPostSun.attr("type","text")
+          weekPostSun.text(weeklyCalender[0].sunday)
+          $("#sun").append(weekPostSun)
+        
+        }
+
+        
 
  
 
