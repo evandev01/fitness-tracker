@@ -61,6 +61,7 @@ var accountInfo=[];
             var activity=1.35;
             var goal=$("#goal").val();
             var endWeight=$("#end-weight").val().trim();
+            var goalTime=$("#goalDays").val().trim();
      
 
             
@@ -92,11 +93,15 @@ var accountInfo=[];
                 // adding the calculation on the
                 $(".daily-calories").text("Your daily calorie intake is: "+dailyCalorieIntake.toFixed(0));
             }
+
+            var startDate=moment().format('LLLL');
         
         
             // saving profile info to local storage
-            profileInfo.push({age:age,startWeight:startWeight,height:inches,goalWeight:endWeight,goal:goal,calories:dailyCalorieIntake})
+            profileInfo.push({age:age,startWeight:startWeight,height:inches,goalWeight:endWeight,goal:goal,calories:dailyCalorieIntake, goalTime:goalTime,startDate:startDate})
             localStorage.setItem("profileInfo",JSON.stringify(profileInfo));
+
+           
         
         
         });
