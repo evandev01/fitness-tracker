@@ -284,9 +284,11 @@ var accountInfo=[];
           var sat= $("#sat").val().trim();
           var sun= $("#sun").val().trim();
           weeklyCalender.push({monday:mon,tuesday:tue,wednesday:wed,thursday:thur,friday:fri,saturday:sat,sunday:sun});
-          localStorage.setItem("weeklyCalender",JSON.stringify(weeklyCalender));
+
+          console.log(weeklyCalender)
           storeCalender()
-         
+    
+        
 
         });
 
@@ -314,41 +316,21 @@ var accountInfo=[];
         addCalender()
         function addCalender(){
           retrieveCalender();
-          var weekPostMon= $("<textarea>");
-          weekPostMon.attr("type","text")
-          weekPostMon.text(weeklyCalender[0].monday)
-          $("#mon").append(weekPostMon)
+          
+          $("#mon").text(weeklyCalender[0].monday)
+         
+          $("#tue").text(weeklyCalender[0].tuesday)
+        
+          $("#wed").text(weeklyCalender[0].wednesday)
+    
+          $("#thur").text(weeklyCalender[0].thursday)
 
-          var weekPostTue= $("<textarea>");
-          weekPostTue.attr("type","text")
-          weekPostTue.text(weeklyCalender[0].tuesday)
-          $("#tue").append(weekPostTue)
+          $("#fri").text(weeklyCalender[0].friday)
 
-          var weekPostWed= $("<textarea>");
-          weekPostWed.attr("type","text")
-          weekPostWed.text(weeklyCalender[0].wednesday)
-          $("#wed").append(weekPostWed)
-
-          var weekPostThur= $("<textarea>");
-          weekPostThur.attr("type","text")
-          weekPostThur.text(weeklyCalender[0].thursday)
-          $("#thur").append(weekPostThur)
-
-          var weekPostFri= $("<textarea>");
-          weekPostFri.attr("type","text")
-          weekPostFri.text(weeklyCalender[0].friday)
-          $("#fri").append(weekPostFri)
-
-          var weekPostSat= $("<textarea>");
-          weekPostSat.attr("type","text")
-          weekPostSat.text(weeklyCalender[0].saturday)
-          $("#sat").append(weekPostSat)
-
-
-          var weekPostSun= $("<textarea>");
-          weekPostSun.attr("type","text")
-          weekPostSun.text(weeklyCalender[0].sunday)
-          $("#sun").append(weekPostSun)
+          $("#sat").text(weeklyCalender[0].saturday)
+        
+          $("#sun").text(weeklyCalender[0].sunday)
+   
         
         }
 
