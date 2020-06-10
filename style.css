@@ -1,9 +1,81 @@
 @import url('https://fonts.googleapis.com/css2?family=Fjalla+One&family=Poppins:wght@500&display=swap');
 
+body{
+    background-color: #DEDCE6
+}
+
+.card-panel small {
+    display: inline-block;
+}
+
+#date{
+    text-align: center;
+}
 .nav-wrapper{
     background-color: #1275E6;
     font-family: poppins;
 }
+
+nav{
+    height: 100px;
+}
+nav .brand-logo{
+    font-size: 4rem;
+    position: relative;
+    padding-left: 1.8rem;
+    padding-top: 1rem;
+}
+@media(max-width: 900px){
+    nav .brand-logo{
+        font-size: 3rem;
+        position: center;
+        padding-left: 1rem;
+        padding-top: 1rem;
+}}
+@media(min-width: 900px){
+#menu-dropdown{
+    display: none;
+}
+}
+
+
+
+#home-image{
+    width: 100%;
+    height: 100%;
+}
+
+.dropdown-button:hover {
+    background-color: #4DA9FF;
+    box-shadow: 0 4px 8px 0 black;
+}
+.dropdown-button{
+    background-color: #1275E6;
+    }
+
+    .dropdown-content li>a, .dropdown-content li>span{
+        color: #039be5;
+        background-color: #595959;
+        box-shadow: 4px 4px 40px 12px  rgb(31, 31, 31);
+    }
+    .dropdown-content li>a:hover{
+        background-color: #4DA9FF;
+        color: black;
+    }
+    nav ul a:hover {
+        background-color: #DEDCE6;
+        box-shadow: 4px 4px 40px 12px  rgb(31, 31, 31);
+        color: black;
+    }
+    nav ul a{
+        margin-right: 1rem;
+        padding-right: 2rem;
+        padding-left: 2rem;
+        padding-top: 1rem;
+    }
+
+
 body{
     background-color: #DEDCE6
 }
+
