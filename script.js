@@ -181,6 +181,7 @@ var accountInfo=[];
         retrieveCalender();
        
 
+
     function searchCity(city){
 
         // start of weather API
@@ -234,6 +235,8 @@ var accountInfo=[];
     
         function retrieveCity(){
           cityArray=JSON.parse(localStorage.getItem("cityArray")||"[]");
+
+          searchCity(cityArray[0])
         }
 
         // creating a button for user's previously search cities 
