@@ -107,10 +107,47 @@ var accountInfo=[];
             profileInfo.push({age:age,startWeight:startWeight,height:inches,goalWeight:endWeight,goal:goal,calories:dailyCalorieIntake, goalTime:goalTime,startDate:startDate})
 
             storeCalories()
+
+
+            
+
+          
+
             
 
            
         });
+
+        addCalories()
+            function addCalories(){
+              retrieveCalories();
+              var caloriesPost= $("<h8>");
+              caloriesPost.text("Calories: "+profileInfo[0].calories.toFixed(0))
+              $("#calories").append(caloriesPost)
+      
+              
+            }
+      
+      
+            addStartWeight()
+            function addStartWeight(){
+              retrieveCalories();
+              var startWeightPost= $("<h8>");
+              startWeightPost.text("Start Weight: "+profileInfo[0].startWeight)
+              $("#current-weight").append(startWeightPost)
+      
+              
+            }
+            addGoalWeight()
+            function addGoalWeight(){
+              retrieveCalories();
+              var goalWeightPost= $("<h8>");
+              goalWeightPost.text("Goal Weight: "+profileInfo[0].goalWeight)
+              $("#goal-weight").append(goalWeightPost)
+      
+              
+            }
+
 
 
         function storeCalories(){
@@ -121,35 +158,7 @@ var accountInfo=[];
         profileInfo = JSON.parse(localStorage.getItem("profileInfo") || "[]")
       }
 
-      addCalories()
-      function addCalories(){
-        retrieveCalories();
-        var caloriesPost= $("<h8>");
-        caloriesPost.text("Calories: "+profileInfo[0].calories.toFixed(0))
-        $("#calories").append(caloriesPost)
-
-        
-      }
-
-
-      addStartWeight()
-      function addStartWeight(){
-        retrieveCalories();
-        var startWeightPost= $("<h8>");
-        startWeightPost.text("Start Weight: "+profileInfo[0].startWeight)
-        $("#current-weight").append(startWeightPost)
-
-        
-      }
-      addGoalWeight()
-      function addGoalWeight(){
-        retrieveCalories();
-        var goalWeightPost= $("<h8>");
-        goalWeightPost.text("Goal Weight: "+profileInfo[0].goalWeight)
-        $("#goal-weight").append(goalWeightPost)
-
-        
-      }
+     
 
 // end of profile javascript
 
