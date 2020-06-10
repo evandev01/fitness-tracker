@@ -516,12 +516,13 @@ var accountInfo=[];
     
         function retrieveCity(){
           cityArray=JSON.parse(localStorage.getItem("cityArray")||"[]");
-
-        }
-
-
           searchCity(cityArray[0])
+
         }
+
+
+          
+        
 
         // creating a button for user's previously search cities 
         function renderButtons(){
