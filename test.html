@@ -1,26 +1,163 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet"  href="style.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!--Load the AJAX API-->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- commented this out since it was causing an error  -->
+    <!--Import materialize.css-->
+    <!-- <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/> -->
+    <!-- placed this at the javascript at bottom of the page -->
+    <!-- Compiled and minified JavaScript
+    <script type="text/javascript" src="dashboard.js"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <title>Test</title>
+    <title>Dashboard</title>
 </head>
-<body> -->
-    
-
-
-
-
-    <!-- imported Jquery  -->
-<!-- <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script> -->
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
+                <nav>
+                    <div class="nav-wrapper">
+                      <a href="#" class="brand-logo">Fitness Tracker</a>
+                      <ul id="nav-mobile" class="right hide-on-med-and-down">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="dashboard.html">Dashboard</a></li>
+                        <li><a href="profile.html">Profile</a></li>
+                        <li><a href="useraccount.html">Account</a></li>
+                      </ul>
+                    </div>
+                  </nav>
+            </div>
+        </div>
+        <div class="row">
+          <div class="col s2 md3"></div>
+          <div class="col s8 md6">
+               <!-- city search for weather api -->
+               <form id="city-form">
+                <label for="city-input">Search your City for the weather: </label>
+                <input type="text" class="form-control" id="city-input">
+                <button type="submit" class="btn btn-default" id="select-city">
+                <i class="search"></i> search</button>
+                <div id="city-list"></div>
+              </form>
+            <div class="card medium">
+              <div id=date>
+                <!-- todays date goes here moment.js -->
+              </div>
+              <h6>
+                <!-- where tempreature is placed for now -->
+              </h6>
+              <h3>
+                <!-- where weather icon is placed for now -->
+              </h3>
+              <div id = "workout"></div>
+              <div id="calories"></div>
+              <div id="current-weight"></div>
+              <div id="goal-weight"></div>
+            </div>
+          </div>
+          <div class="col s2 md3"></div>
+        </div>
+        <div class="row">
+          <div class="col s2"></div>
+          <div class="col s8" id="7day-cal">
+            <div class="card-panel small">
+              <span class="black-text">Weekly Calendar</span>
+              <div class="card-panel small">
+                <span class="black-text">
+                  <div id="monday">
+                    Monday
+                  </div>
+                  <!-- user input for monday goes below-->
+                  <textarea id="mon"></textarea>
+                </span>
+              </div>
+              <div class="card-panel small">
+                <span class="black-text">
+                  <div id="tuesday">
+                   Tuesday
+                  </div>
+                  <!-- user input for tuesday goes below -->
+                  <textarea id="tue"></textarea>
+                </span>
+              </div>
+              <div class="card-panel small">
+                <span class="black-text">
+                  <div id="wednesday">
+                    Wednesday
+                  </div>
+                  <!-- user input for wednesday goes below-->
+                  <textarea id="wed"></textarea>
+                </span>
+              </div>
+              <div class="card-panel small">
+                <span class="black-text">
+                  <div id="thursday">
+                    Thursday
+                  </div>
+                  <!-- user input for thursday goes below -->
+                  <textarea id="thur"></textarea>
+                </span>
+              </div>
+              <div class="card-panel small">
+                <span class="black-text">
+                  <div id="friday">
+                    Friday
+                  </div>
+                  <!-- user input for friday goes below -->
+                  <textarea id="fri"></textarea>
+                </span>
+              </div>
+              <div class="card-panel small">
+                <span class="black-text">
+                  <div id="saturday">
+                    Saturday
+                  </div>
+                  <!-- user input for saturday goes below -->
+                  <textarea id="sat"></textarea>
+                </span>
+              </div>
+              <div class="card-panel small">
+                <span class="black-text">
+                  <div id="sunday">
+                    Sunday
+                  </div>
+                  <!-- user input for sunday goes below -->
+                  <textarea id="sun"></textarea>
+                </span>
+              </div>
+              <!-- save button for the weekly calender below -->
+              <p>Save your weekly calender below!</p>
+              <button type="submit" class="btn btn-default" id="saveWeekly">
+              <i class="save"></i> save</button><br><br>
+              <!-- current weight update button below -->
+              <label for="current-weight">Weight(lbs):</label>
+              <input type="text" class="form-control" id="current-weight">
+              <button type="submit" class="btn btn-default" id="update-weight">
+              <i class="update"></i> update weight</button>
+            </div>
+            </div>
+            <div class="col s2"></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s12">
+      <div id="chart_div"></div>
+    </div>
+  </div>
+</div>
+<!-- imported Jquery  -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <!-- imported moment js -->
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script> -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 <!-- imported the dashboard javascript file  -->
-<!-- <script src="dashboard.js"></script>  -->
-<!-- </body> -->
-<!-- </html> --> 
+<script src="dashboard.js"></script>  
+<script src="script.js"></script> 
+</body>
+</html>
