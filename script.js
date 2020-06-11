@@ -16,86 +16,89 @@
 
     var dailyWorkoutArray= [];
     var muscleWorkoutArray= [];
+  
 
 
-    var arms = [{apiName:"Biceps brachii",
-                userName:"Bicep",
-                muscleid: "1",
-                imageLink: "/assets/images/test",
-                frontBack: true},
-                {apiName: "Anterior deltoid",
-                userName: "Shoulder",
-                muscleid: 2,
-                imageLink: "test",
-                frontBack: true},
-                {apiName: "Brachialis",
-                userName: "Brachialis",
-                muscleid: 13,
-                imageLink: "test",
-                frontBack:true},
-                {apiName: "Latissimus dorsi",
-                userName: "Lats",
-                muscleid: 12,
-                imageLink: "test",
-                frontBack: false},
-                {apiName: "Obliquus externus abdominis",
-                userName: "Obliquus",
-                muscleid: 14,
-                imageLink: "test",
-                frontBack: true},
-                {apiName: "Pectoralis major",
-                userName: "Pecks",
-                muscleid: 4,
-                imageLink: "test",
-                frontBack: true},
-                {apiName: "Rectus abdominis",
-                userName: "Abs",
-                muscleid: 6,
-                imageLink: "test",
-                frontBack: true},
-                {apiName: "Serratus anterior",
-                userName: "Serratus anterior",
-                muscleid: 3,
-                imageLink: "test",
-                frontBack: true},
-                {apiName: "Trapezius",
-                userName: "Traps",
-                muscleid: 9,
-                imageLink: "test",
-                frontBack: false},
-                {apiName: "Triceps brachii",
-                userName: "Triceps",
-                muscleid: 5,
-                imageLink: "test",
-                frontBack: false}
-]
-    var legs = [{apiName: "Biceps femoris",
-                userName: "Thigh",
-                muscleid: 11,
-                imageLink: "test",
-                frontBack: false},
-                {apiName: "Gastrocnemius",
-                userName: "Gastrocnemius",
-                muscleid: 7,
-                imageLink: "test",
-                frontBack: false},
-                {apiName: "Gluteus maximus",
-                userName: "Glutes",
-                muscleid: 8,
-                imageLink: "test",
-                frontBack: false},
-                {apiName: "Quadriceps femoris",
-                userName: "Quads",
-                muscleid: 10,
-                imageLink: "test",
-                frontBack: true},
-                {apiName: "Soleus",
-                userName: "Calves",
-                muscleid: 15,
-                imageLink: "test",
-                frontBack: false}
-    ]
- 
+    var biceps = [{apiName:"Biceps brachii",
+    userName:"Bicep",
+    muscleid: "1",
+    imageLink: "./assets/muscle-groups/biceps.jpg",
+    frontBack: true},
+    {apiName: "Brachialis",
+    userName: "Brachialis",
+    muscleid: 13,
+    imageLink: "./assets/muscle-groups/biceps.jpg",
+    frontBack:true}];
+var shoulder = [{apiName: "Anterior deltoid",
+    userName: "Shoulder",
+    muscleid: 2,
+    imageLink: "./assets/muscle-groups/shoulders.jpg",
+    frontBack: true}];
+var back = [
+    {apiName: "Latissimus dorsi",
+    userName: "Lats",
+    muscleid: 12,
+    imageLink: "./assets/muscle-groups/back.jpg",
+    frontBack: false},
+    {apiName: "Serratus anterior",
+    userName: "Serratus anterior",
+    muscleid: 3,
+    imageLink: "./assets/muscle-groups/back.jpg",
+    frontBack: true},
+    {apiName: "Trapezius",
+    userName: "Traps",
+    muscleid: 9,
+    imageLink: "./assets/muscle-groups/back.jpg",
+    frontBack: false}];
+var abs = [ {apiName: "Rectus abdominis",
+    userName: "Abs",
+    muscleid: 6,
+    imageLink: "./assets/muscle-groups/abs.jpg",
+    frontBack: true},
+    {apiName: "Obliquus externus abdominis",
+    userName: "Obliquus",
+    muscleid: 14,
+    imageLink: "./assets/muscle-groups/abs.jpg",
+    frontBack: true}];
+var chest = [{apiName: "Pectoralis major",
+    userName: "Pecks",
+    muscleid: 4,
+    imageLink: "./assets/muscle-groups/chest.jpg",
+    frontBack: true}];
+var triceps = [{apiName: "Triceps brachii",
+    userName: "Triceps",
+    muscleid: 5,
+    imageLink: "./assets/muscle-groups/triceps.jpg",
+    frontBack: false}];
+var legs = [{apiName: "Biceps femoris",
+    userName: "Thigh",
+    muscleid: 11,
+    imageLink: "./assets/muscle-groups/hamstrings.jpg",
+    frontBack: false},
+    {apiName: "Quadriceps femoris",
+    userName: "Quads",
+    muscleid: 10,
+    imageLink: "./assets/muscle-groups/quadriceps.jpg",
+    frontBack: true},
+    {apiName: "Soleus",
+    userName: "Calves",
+    muscleid: 15,
+    imageLink: "./assets/muscle-groups/calves.jpg",
+    frontBack: false},
+    {apiName: "Gastrocnemius",
+    userName: "Gastrocnemius",
+    muscleid: 7,
+    imageLink: "./assets/muscle-groups/calves.jpg",
+    frontBack: false}]
+var glutes = [{apiName: "Gluteus maximus",
+    userName: "Glutes",
+    muscleid: 8,
+    imageLink: "./assets/muscle-groups/glutes.jpg",
+    frontBack: false}];
+
+   $("#arms").addClass("bodyChoice")
+   $("#legs").addClass("bodyChoice")
+
     $("#muscleGroups").hide()
     $("#bodyChoices").hide()
     $("#workouts").hide()
@@ -132,34 +135,127 @@
 // Create Muscles Selection
 
 $(".bodyChoice").on("click",function(){
-    event.preventDefault();  
-    $("#bodyChoices").hide();
-    $("#muscleGroups").show();
-    armLegIndictor = $(this).attr("id")
-    console.log(armLegIndictor)
-    createMuclesChoices();
+  event.preventDefault();  
+  $("#bodyChoices").hide();
+  $("#muscleGroups").show();
+  armLegIndictor = $(this).attr("id")
+  console.log(armLegIndictor)
+  createMuclesChoices();
 })
 
   function createMuclesChoices(){
     $("#muscleGroups").empty();
+
     if(armLegIndictor == "arms"){
       console.log("arms")
-      for(i=0; i < arms.length ;i++){
+      // var upColMenu = $(".bodyChoice")
+      for(i=0; i < biceps.length ;i++){
+        var bicepsDiv = $("<row>");
+        bicepsDiv.addClass("<div>");
         var rowEl = $("<button>")
         rowEl.addClass("muscleGroup")
-        rowEl.attr("muscleId",arms[i].muscleid)
-        rowEl.text(arms[i].userName)
-        $("#muscleGroups").append(rowEl)
+        rowEl.attr("muscleId",biceps[i].muscleid)
+        rowEl.text(biceps[i].userName)
+        var imageEl = $("<img>")
+        imageEl.attr("src",biceps[i].imageLink)
+        bicepsDiv.append(rowEl)
+        bicepsDiv.append(imageEl)
+        $("#muscleGroups").append(bicepsDiv)
+      }
+      for(i=0; i < chest.length ;i++){
+        var chestDiv = $("<row>");
+        chestDiv.addClass("<div>");
+        var rowEl = $("<button>")
+        rowEl.addClass("muscleGroup")
+        rowEl.attr("muscleId",chest[i].muscleid)
+        rowEl.text(chest[i].userName)
+        var imageEl = $("<img>")
+        imageEl.attr("src",chest[i].imageLink)
+        chestDiv.append(rowEl)
+        chestDiv.append(imageEl)
+        $("#muscleGroups").append(chestDiv)
+      }
+      for(i=0; i < shoulder.length ;i++){
+        var shoulderDiv = $("<row>");
+        shoulderDiv.addClass("<div>");
+        var rowEl = $("<button>")
+        rowEl.addClass("muscleGroup")
+        rowEl.attr("muscleId",shoulder[i].muscleid)
+        rowEl.text(shoulder[i].userName)
+        var imageEl = $("<img>")
+        imageEl.attr("src",shoulder[i].imageLink)
+        shoulderDiv.append(rowEl)
+        shoulderDiv.append(imageEl)
+        $("#muscleGroups").append(shoulderDiv)
+      }
+      for(i=0; i < back.length ;i++){
+        var backDiv = $("<row>");
+        backDiv.addClass("<div>" + "col s12");
+        var rowEl = $("<button>")
+        rowEl.addClass("muscleGroup")
+        rowEl.attr("muscleId",back[i].muscleid)
+        rowEl.text(back[i].userName)
+        var imageEl = $("<img>")
+        imageEl.attr("src",back[i].imageLink)
+        backDiv.append(rowEl)
+        backDiv.append(imageEl)
+        $("#muscleGroups").append(backDiv)
+      }
+      for(i=0; i < abs.length ;i++){
+        var absDiv = $("<row>");
+        absDiv.addClass("<div>");
+        var rowEl = $("<button>")
+        rowEl.addClass("muscleGroup")
+        rowEl.attr("muscleId",abs[i].muscleid)
+        rowEl.text(abs[i].userName)
+        var imageEl = $("<img>")
+        imageEl.attr("src",abs[i].imageLink)
+        absDiv.append(rowEl)
+        absDiv.append(imageEl)
+        $("#muscleGroups").append(absDiv)
+      }
+
+      for(i=0; i < triceps.length ;i++){
+        var tricepsDiv = $("<row>");
+        tricepsDiv.addClass("<div>");
+        var rowEl = $("<button>")
+        rowEl.addClass("muscleGroup")
+        rowEl.attr("muscleId",triceps[i].muscleid)
+        rowEl.text(triceps[i].userName)
+        var imageEl = $("<img>")
+        imageEl.attr("src",triceps[i].imageLink)
+        tricepsDiv.append(rowEl)
+        tricepsDiv.append(imageEl)
+        $("#muscleGroups").append(tricepsDiv)
       }
     }
     else{
       console.log("legs")
       for(i=0; i < legs.length ;i++){
+        var legsDiv = $("<row>");
+        legsDiv.addClass("<div>");
         var rowEl = $("<button>")
         rowEl.addClass("muscleGroup")
         rowEl.attr("muscleId",legs[i].muscleid)
         rowEl.text(legs[i].userName)
-        $("#muscleGroups").append(rowEl)
+        var imageEl = $("<img>")
+        imageEl.attr("src",legs[i].imageLink)
+        legsDiv.append(rowEl)
+        legsDiv.append(imageEl)
+        $("#muscleGroups").append(legsDiv)
+      }
+      for(i=0; i < glutes.length ;i++){
+        var glutesDiv = $("<row>");
+        glutesDiv.addClass("<div>");
+        var rowEl = $("<button>")
+        rowEl.addClass("muscleGroup")
+        rowEl.attr("muscleId",glutes[i].muscleid)
+        rowEl.text(glutes[i].userName)
+        var imageEl = $("<img>")
+        imageEl.attr("src",glutes[i].imageLink)
+        glutesDiv.append(rowEl)
+        glutesDiv.append(imageEl)
+        $("#muscleGroups").append(glutesDiv)
       }
     }
     $(".muscleGroup").on("click",function(){
@@ -173,7 +269,7 @@ $(".bodyChoice").on("click",function(){
   })
 
   };
-
+  
 // example muscles=id
 
 function generateMuscleWorkout (){
@@ -478,13 +574,13 @@ function addDailyWorkout(){
         var icon=response.weather[0].main;
 
         if (icon==="Rain"){
-        $("h3").append($("<img>",{id:"rain",src:"Assets/rain.jpg", width:"50",height:"50"}))
+        $("h3").append($("<img>",{id:"rain",src:"Assets/rain.jpg", width:"65",height:"65"}))
                     
         }else if (icon==="Clear"){
-        $("h3").append($("<img>",{id:"rain",src:"Assets/sunny.png", width:"50",height:"50"}))
+        $("h3").append($("<img>",{id:"rain",src:"Assets/sunny.png", width:"65",height:"65"}))
 
         }else if (icon==="Clouds"){
-        $("h3").append($("<img>",{id:"rain",src:"Assets/cloud.jpg", width:"50",height:"50"}))
+        $("h3").append($("<img>",{id:"rain",src:"Assets/cloud.jpg", width:"65",height:"65"}))
         }
 
         console.log(icon);
