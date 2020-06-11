@@ -150,8 +150,8 @@ $(".bodyChoice").on("click",function(){
       console.log("arms")
       // var upColMenu = $(".bodyChoice")
       for(i=0; i < biceps.length ;i++){
-        var bicepsDiv = $("<row>");
-        bicepsDiv.addClass("<div>");
+        var bicepsDiv = $("<div>");
+        bicepsDiv.addClass("col s4");
         var rowEl = $("<button>")
         rowEl.addClass("muscleGroup")
         rowEl.attr("muscleId",biceps[i].muscleid)
@@ -163,8 +163,8 @@ $(".bodyChoice").on("click",function(){
         $("#muscleGroups").append(bicepsDiv)
       }
       for(i=0; i < chest.length ;i++){
-        var chestDiv = $("<row>");
-        chestDiv.addClass("<div>");
+        var chestDiv = $("<div>");
+        chestDiv.addClass("col s4");
         var rowEl = $("<button>")
         rowEl.addClass("muscleGroup")
         rowEl.attr("muscleId",chest[i].muscleid)
@@ -176,8 +176,8 @@ $(".bodyChoice").on("click",function(){
         $("#muscleGroups").append(chestDiv)
       }
       for(i=0; i < shoulder.length ;i++){
-        var shoulderDiv = $("<row>");
-        shoulderDiv.addClass("<div>");
+        var shoulderDiv = $("<div>");
+        shoulderDiv.addClass("col s4");
         var rowEl = $("<button>")
         rowEl.addClass("muscleGroup")
         rowEl.attr("muscleId",shoulder[i].muscleid)
@@ -189,8 +189,8 @@ $(".bodyChoice").on("click",function(){
         $("#muscleGroups").append(shoulderDiv)
       }
       for(i=0; i < back.length ;i++){
-        var backDiv = $("<row>");
-        backDiv.addClass("<div>" + "col s12");
+        var backDiv = $("<div>");
+        backDiv.addClass("col s4");
         var rowEl = $("<button>")
         rowEl.addClass("muscleGroup")
         rowEl.attr("muscleId",back[i].muscleid)
@@ -202,8 +202,8 @@ $(".bodyChoice").on("click",function(){
         $("#muscleGroups").append(backDiv)
       }
       for(i=0; i < abs.length ;i++){
-        var absDiv = $("<row>");
-        absDiv.addClass("<div>");
+        var absDiv = $("<div>");
+        absDiv.addClass("col s4");
         var rowEl = $("<button>")
         rowEl.addClass("muscleGroup")
         rowEl.attr("muscleId",abs[i].muscleid)
@@ -216,8 +216,8 @@ $(".bodyChoice").on("click",function(){
       }
 
       for(i=0; i < triceps.length ;i++){
-        var tricepsDiv = $("<row>");
-        tricepsDiv.addClass("<div>");
+        var tricepsDiv = $("<div>");
+        tricepsDiv.addClass("col s4");
         var rowEl = $("<button>")
         rowEl.addClass("muscleGroup")
         rowEl.attr("muscleId",triceps[i].muscleid)
@@ -232,8 +232,8 @@ $(".bodyChoice").on("click",function(){
     else{
       console.log("legs")
       for(i=0; i < legs.length ;i++){
-        var legsDiv = $("<row>");
-        legsDiv.addClass("<div>");
+        var legsDiv = $("<div>");
+        legsDiv.addClass("col s4");
         var rowEl = $("<button>")
         rowEl.addClass("muscleGroup")
         rowEl.attr("muscleId",legs[i].muscleid)
@@ -245,8 +245,8 @@ $(".bodyChoice").on("click",function(){
         $("#muscleGroups").append(legsDiv)
       }
       for(i=0; i < glutes.length ;i++){
-        var glutesDiv = $("<row>");
-        glutesDiv.addClass("<div>");
+        var glutesDiv = $("<div>");
+        glutesDiv.addClass("col s4");
         var rowEl = $("<button>")
         rowEl.addClass("muscleGroup")
         rowEl.attr("muscleId",glutes[i].muscleid)
@@ -432,7 +432,7 @@ function addDailyWorkout(){
 
             
         //formula to calculate maintenance calories which are calories the body need in order to function properly based on the factors selected above by the user
-        var calorieIntake=(66.473+(6.23*startWeight)+(12.7*inches)-(6.8*age)*activity,(655+(4.35*+startWeight)+(4.7*inches)-(4.7*age))*activity);
+        var calorieIntake=(66.473+(6.23*startWeight)+(12.7*inches)-(6.8*age)*activity,(655+(4.35*+startWeight)+(4.7*inches)-(4.7*age))*activity).toFixed(2);
 
 
 
