@@ -262,18 +262,6 @@ function addDailyWorkout(){
   }
 }
 
-// function saveWorkoutRoutine(){
-
-//   WorkoutRoutineArray.push({workName: "workoutName", workouts: dailyWorkoutArray})
-// }
-
-// function storeWorkoutRoutine(){
-//   localStorage.setItem("WorkoutRoutineArray",JSON.stringify(WorkoutRoutineArray));
-// }
-
-// function retrieveWorkoutRoutine(){
-//   WorkoutRoutineArray = JSON.parse(localStorage.getItem("WorkoutRoutineArray") || "[]")
-// }
 
 //   End Generate Workout javascript
 
@@ -386,21 +374,25 @@ var accountInfo=[];
 
             storeCalories()
 
-           
+            addCalories()
+            addStartWeight()
+            addGoalWeight()
         });
 
-            addCalories()
+            
               function addCalories(){
               retrieveCalories();
+        
+            
               var caloriesPost= $("<h8>");
-              caloriesPost.text("Calories: "+profileInfo[0].calories.toFixed(0))
+              caloriesPost.text("Calories: "+ profileInfo[0].calories.toFixed(0))
               $("#calories").append(caloriesPost)
       
               
             }
       
       
-            addStartWeight()
+            
             function addStartWeight(){
               retrieveCalories();
               var startWeightPost= $("<h8>");
@@ -409,7 +401,7 @@ var accountInfo=[];
       
               
             }
-            addGoalWeight()
+            
             function addGoalWeight(){
               retrieveCalories();
               var goalWeightPost= $("<h8>");
@@ -450,6 +442,7 @@ var accountInfo=[];
         retrieveCity();
         storeCity();
         retrieveCalender();
+        retrieveCalories()
        
 
     function searchCity(city){
