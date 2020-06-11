@@ -269,35 +269,35 @@ function addDailyWorkout(){
 // USER ACCOUNT PAGE 
 // javascript includes user input to set up user account (name, username, password,email,city and phone number)
 
-var accountInfo=[];
+// var accountInfo=[];
 
-    // added the click event for the next button to procced to profile page
-    $("#next1").on("click", function(event){
-        event.preventDefault();
-        window.location.href = "profile.html";
+//     // added the click event for the next button to procced to profile page
+//     $("#next1").on("click", function(event){
+//         event.preventDefault();
+//         window.location.href = "profile.html";
         
         
-        });
+//         });
         
-        // added a click function for calulate button 
-        $("#save1").on("click", function(event){
-          accountInfo=[];
-          event.preventDefault();
-            // created variables for each user input 
-            var name=$("#name").val().trim();
-            var username=$("#username").val().trim();
-            var email=$("#email").val().trim();
-            var password=$("#password").val().trim();
-            var address=$("#city").val().trim();
-            var phone=$("#phone").val().trim();
-          accountInfo.push({name:name,userName:username,email:email,password:password,address:address,phone:phone});
+//         // added a click function for calulate button 
+//         $("#save1").on("click", function(event){
+//           accountInfo=[];
+//           event.preventDefault();
+//             // created variables for each user input 
+//             var name=$("#name").val().trim();
+//             var username=$("#username").val().trim();
+//             var email=$("#email").val().trim();
+//             var password=$("#password").val().trim();
+//             var address=$("#city").val().trim();
+//             var phone=$("#phone").val().trim();
+//           accountInfo.push({name:name,userName:username,email:email,password:password,address:address,phone:phone});
 
-          // saved in local storage under accountInfo
-          localStorage.setItem("accountInfo",JSON.stringify(accountInfo));
+//           // saved in local storage under accountInfo
+//           localStorage.setItem("accountInfo",JSON.stringify(accountInfo));
   
         
         
-        });
+//         });
 
 // end of user account javascript
 
@@ -312,7 +312,7 @@ var accountInfo=[];
 
         $("#next").on("click", function(event){
         event.preventDefault();
-        window.location.href = "dashboard.html";
+        window.location.href = "workout.html";
         storeCalories()
         
         
