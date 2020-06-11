@@ -73,9 +73,13 @@ nav .brand-logo{
         padding-left: 2rem;
         padding-top: 1rem;
     }
-
-
-body{
-    background-color: #DEDCE6
-}
+    /* #calculate,#save-info{
+        text-align: center;
+    } */
+    #profile-main{
+        text-align: center;
+    }
+    .form-control{
+        initial-letter-align: center;
+    }
 

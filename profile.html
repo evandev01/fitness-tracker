@@ -61,6 +61,7 @@
         </div>
         <div class="col s4"></div>
         </div>
+
         <div class="row">
             <div class="col s4"></div>
             <div class="col s4">
@@ -82,57 +83,21 @@
             </div>
             <div class="col s4"></div>
         </div>
-        <div class="row">
+
+<div class="row">
             <div class="col s4"></div>
             <div class="col s4">
             <div class="form-group">
-                <label>What is your goal?</label>
-                <select class="browser-default" id="goal">
-                <option value="" disabled selected>Choose your option</option>
-                <option value="gain">Gain muscle mass</option>
-                <option value="lose">Lose weight</option>
-                <option value="maintain">Maintain weight</option>
-                </select>
+                <label for="goalDays">Goal Time(days):</label>
+                <input type="text" class="form-control" id="goalDays">
             </div>
             </div>
             <div class="col s4"></div>
-        
+            </div>
 
-    </div>
-    <div class="row">
-        <div class="col s12">
-    <div class="form-group">
-        <label for="age">Age:</label>
-        <input type="text" class="form-control" id="age">
-    </div>
-</div>
-</div>
 <div class="row">
-    <div class="col s12">
-    <div class="form-group">
-        <label for="weight">Weight(lbs):</label>
-        <input type="text" class="form-control" id="weight">
-    </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col s12">
-    <div class="form-group">
-        <label for="height">Height(inches)</label>
-        <input type="text" class="form-control" id="height">
-    </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col s12">
-    <div class="form-group">
-        <label for="goalDays">Goal Time(days):</label>
-        <input type="text" class="form-control" id="goalDays">
-    </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col s12">
+    <div class="col s4"></div>
+        <div class="col s4">
     <div class="form-group">
         <label>What is your goal?</label>
         <select class="browser-default" id="goal">
@@ -143,28 +108,8 @@
         </select>
     </div>
     </div>
-   
+    <div class="col s4"></div>
 </div>
-<div class="row">
-    <div class="col s12">
-    <div class="form-group">
-        <label for="end-weight">End goal Weight(lbs):</label>
-        <input type="text" class="form-control" id="end-weight">
-    </div>
-    </div>
-    </div>
-    <div class="row" id="calculate">
-        <div class="col s12">
-    <p>Click calculate to view your daily calorie target!</p>
-    <!-- calculate button below -->
-    <button type="submit" class="btn btn-default" id="run-calculation">
-    <i class="submit"></i> Calculate</button><br>
-    <!-- daily calories displayed below -->
-    <div class="row">
-        <div class="col s12">
-            <div class="daily-calories"></div>
-
-        </div>
 
         <div class="row">
             <div class="col s4"></div>
@@ -176,6 +121,7 @@
             </div>
             </div>
             <div class="col s4"></div>
+
             <div class="row" id="calculate">
                 <div class="col s4"></div>
                 <div class="col s4">
@@ -183,7 +129,10 @@
             <!-- calculate button below -->
             <button type="submit" class="btn btn-default" id="run-calculation">
             <i class="submit"></i> Calculate</button><br>
+                </div>
             <div class="col s4"></div>
+            </div>
+
             <!-- daily calories displayed below -->
             <div class="row">
                 <div class="col s4"></div>
@@ -191,6 +140,10 @@
                     <div class="daily-calories"></div>
                 </div>
             </div>
+
+            <div class="row">
+                <div class="col s4"></div>
+                <div class="col s4">
             <!-- save button to save user input to local storage  -->
             <button type="submit" class="btn btn-default" id="saveProfile">
             <i class="save"></i> save</button>
@@ -199,6 +152,9 @@
             <i class="next"></i> Next</button>
             </div>
             <div class="col s4"></div>
+        </div>  
+
+
 </div>
 
 <!-- imported Jquery  -->
