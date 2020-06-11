@@ -337,6 +337,10 @@ var accountInfo=[];
             
         //formula to calculate maintenance calories which are calories the body need in order to function properly based on the factors selected above by the user
         var calorieIntake=(66.473+(6.23*startWeight)+(12.7*inches)-(6.8*age)*activity,(655+(4.35*+startWeight)+(4.7*inches)-(4.7*age))*activity);
+
+
+
+       
         
         // if and else statement the calulates target calories intake based on if the user wants to maintain, lose or gain.
             if (goal==="gain"){
@@ -350,7 +354,7 @@ var accountInfo=[];
                 $(".daily-calories").text("Error fields cannot be blank");
              
             }
-        
+               
         
         //   if else statement to prevent calculation if any input is blank for acurate calculation 
             if (age,startWeight,inches,endWeight===""){
@@ -361,7 +365,7 @@ var accountInfo=[];
         
             }else {
                 // adding the calculation on the
-                $(".daily-calories").text("Your daily calorie intake is: "+dailyCalorieIntake.toFixed(0));
+                $(".daily-calories").text("Your daily calorie intake is: "+dailyCalorieIntake);
             }
 
             var startDate=moment().format('L');
@@ -379,20 +383,20 @@ var accountInfo=[];
             addGoalWeight()
         });
 
-            
+              addCalories()
               function addCalories(){
               retrieveCalories();
         
             
               var caloriesPost= $("<h8>");
-              caloriesPost.text("Calories: "+ profileInfo[0].calories.toFixed(0))
+              caloriesPost.text("Calories: "+ profileInfo[0].calories)
               $("#calories").append(caloriesPost)
       
               
             }
       
       
-            
+            addStartWeight()
             function addStartWeight(){
               retrieveCalories();
               var startWeightPost= $("<h8>");
@@ -401,7 +405,7 @@ var accountInfo=[];
       
               
             }
-            
+            addGoalWeight()
             function addGoalWeight(){
               retrieveCalories();
               var goalWeightPost= $("<h8>");
@@ -442,7 +446,7 @@ var accountInfo=[];
         retrieveCity();
         storeCity();
         retrieveCalender();
-        retrieveCalories()
+        retrieveCalories();
        
 
     function searchCity(city){
@@ -560,6 +564,7 @@ var accountInfo=[];
 
           console.log(weeklyCalender)
           storeCalender()
+          addCalender()
     
         
 
@@ -577,16 +582,16 @@ var accountInfo=[];
 
     
         });
-        
+        storeCalender()
         function storeCalender (){
           localStorage.setItem("weeklyCalender",JSON.stringify(weeklyCalender));
         }
-    
+        retrieveCalender()
         function retrieveCalender(){
           weeklyCalender=JSON.parse(localStorage.getItem("weeklyCalender")||"[]");
         }
 
-        addCalender()
+       addCalender()
         function addCalender(){
           retrieveCalender();
           
