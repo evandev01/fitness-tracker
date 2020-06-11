@@ -572,16 +572,16 @@ var accountInfo=[];
 
         // local storage for update weight section below 
 
-          $("#update-weight").on("click",function(event){
-          currentWeight=[];
-          event.preventDefault();
-          var updatedWeight= $("#current-weight").val().trim();
-          currentWeight.push(updatedWeight);
-          localStorage.setItem("currentWeight",JSON.stringify(currentWeight));
-          storeCalender()
+        //   $("#update-weight").on("click",function(event){
+        //   currentWeight=[];
+        //   event.preventDefault();
+        //   var updatedWeight= $("#current-weight").val().trim();
+        //   currentWeight.push(updatedWeight);
+        //   localStorage.setItem("currentWeight",JSON.stringify(currentWeight));
+        //   storeCalender()
 
     
-        });
+        // });
         storeCalender()
         function storeCalender (){
           localStorage.setItem("weeklyCalender",JSON.stringify(weeklyCalender));
@@ -594,7 +594,8 @@ var accountInfo=[];
        addCalender()
         function addCalender(){
           retrieveCalender();
-          
+          if (weeklyCalender != ''){
+            console.log("Add Calendar")
           $("#mon").text(weeklyCalender[0].monday)
          
           $("#tue").text(weeklyCalender[0].tuesday)
@@ -608,7 +609,7 @@ var accountInfo=[];
           $("#sat").text(weeklyCalender[0].saturday)
         
           $("#sun").text(weeklyCalender[0].sunday)
-   
+          }
         
         }
 
@@ -632,14 +633,13 @@ $("#update-weight").on("click",function(){
   console.log("check")
   weightJournal = []
   retrieveWeightJournal()
-  // var entryWeight = $("#current-weight").val()
-  var entryWeight = 190
-  // var startDateInput = moment("6/6/2020","MM/DD/YYYY")
-  var startDateInput = moment(profileInfo[0].startDate,"MM/DD/YYYY")
+  var entryWeight = parseInt($("#current-weight2").val())
+  var startDateInput = moment("6/6/2020","MM/DD/YYYY")
+  // var startDateInput = moment(profileInfo[0].startDate,"MM/DD/YYYY")
   var currentDateInput = moment().format('L') ;
   var duration = moment.duration(startDateInput.diff(currentDateInput));
   var entryDayInput = duration.asDays()*-1;
-  console.log(entryDayInput)
+  console.log("Day: "+entryDayInput)
   weightJournal.push({entryDay: entryDayInput,weight: entryWeight})
 console.log(weightJournal)
 graphDetails = []
@@ -659,7 +659,7 @@ timeFrame:profileInfo[0].goalTime}
 var startWeight = parseInt(profile.startWeight,10)
 var goalWeight = parseInt(profile.goalWeight,10)
 var timeFrame = parseInt(profile.timeFrame,0)
-var lossDay = (startWeight - goalWeight)/timeFrame
+var lossDay = ((startWeight - goalWeight)/timeFrame).toFixed(2)
 
 if (weightJournal == ''){
   weightJournal.push({entryDay: 0,weight: startWeight})
