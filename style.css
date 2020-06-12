@@ -148,3 +148,19 @@ nav .brand-logo{
         
 
     }
+    .startBtn {
+        position: absolute;
+        box-shadow: 0 3px 3px 3px #FFC800;
+        top: 80%;
+        left: 50%;
+        transform: translate(-60%, -60%);
+        -ms-transform: translate(-60%, -60%);
+        background-color: #555;
+        color: white;
+        font-size: 16px;
+        padding: 12px 24px;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        text-align: center;
+      }
