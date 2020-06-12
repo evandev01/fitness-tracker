@@ -6,7 +6,7 @@
     var apiURL = "https://wger.de/api/v2/"
     // Chooses English language
     var language = "?language=2"
-    // Workouts approved by API and example of variables
+    // Workouts approved by API 
     var status = "&status=2"
     var frontBack = true
     var muscleId = 1
@@ -111,7 +111,7 @@ var glutes = [{apiName: "Gluteus maximus",
       dailyWorkoutArray = []
       storeDailyWorkout()
       generateWorkout()
-    })
+    });
 
     // Before generate workout function call name workout function. Unhide form for saving workout name and then call generate workout function
 
@@ -121,7 +121,7 @@ var glutes = [{apiName: "Gluteus maximus",
     storeDailyWorkout()
     generateDailyWorkout()
     $("#genWorkout").show()
-  })
+  });
 
   
     function generateWorkout(){
@@ -432,7 +432,7 @@ function addDailyWorkout(){
 
             
         //formula to calculate maintenance calories which are calories the body need in order to function properly based on the factors selected above by the user
-        var calorieIntake= Math.floor(66.473+(6.23*startWeight)+(12.7*inches)-(6.8*age)*activity,(655+(4.35*+startWeight)+(4.7*inches)-(4.7*age))*activity);
+        var calorieIntake=(66.473+(6.23*startWeight)+(12.7*inches)-(6.8*age)*activity,(655+(4.35*+startWeight)+(4.7*inches)-(4.7*age))*activity).toFixed(2);
 
 
 
@@ -479,7 +479,7 @@ function addDailyWorkout(){
             addGoalWeight()
         });
 
-              addCalories()
+              
               function addCalories(){
               retrieveCalories();
         
@@ -492,7 +492,7 @@ function addDailyWorkout(){
             }
       
       
-            addStartWeight()
+            
             function addStartWeight(){
               retrieveCalories();
               var startWeightPost= $("<h8>");
@@ -501,7 +501,7 @@ function addDailyWorkout(){
       
               
             }
-            addGoalWeight()
+            
             function addGoalWeight(){
               retrieveCalories();
               var goalWeightPost= $("<h8>");
@@ -574,13 +574,13 @@ function addDailyWorkout(){
         var icon=response.weather[0].main;
 
         if (icon==="Rain"){
-        $("h3").append($("<img>",{id:"rain",src:"Assets/rain.jpg", width:"65",height:"65"}))
+        $("h3").append($("<img>",{id:"rain",src:"assets/rain.jpg", width:"65",height:"65"}))
                     
         }else if (icon==="Clear"){
-        $("h3").append($("<img>",{id:"rain",src:"Assets/sunny.png", width:"65",height:"65"}))
+        $("h3").append($("<img>",{id:"rain",src:"assets/sunny.png", width:"65",height:"65"}))
 
         }else if (icon==="Clouds"){
-        $("h3").append($("<img>",{id:"rain",src:"Assets/cloud.jpg", width:"65",height:"65"}))
+        $("h3").append($("<img>",{id:"rain",src:"assets/cloud.jpg", width:"65",height:"65"}))
         }
 
         console.log(icon);
@@ -730,7 +730,8 @@ $("#update-weight").on("click",function(){
   weightJournal = []
   retrieveWeightJournal()
   var entryWeight = parseInt($("#current-weight2").val())
-  var startDateInput = moment(profileInfo[0].startDate,"MM/DD/YYYY")
+  var startDateInput = moment("6/6/2020","MM/DD/YYYY")
+  // var startDateInput = moment(profileInfo[0].startDate,"MM/DD/YYYY")
   var currentDateInput = moment().format('L') ;
   var duration = moment.duration(startDateInput.diff(currentDateInput));
   var entryDayInput = duration.asDays()*-1;
