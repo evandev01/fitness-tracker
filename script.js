@@ -352,7 +352,7 @@ function addDailyWorkout(){
   retrieveDailyWorkout();
   for (i=0; i<dailyWorkoutArray.length; i++) {
 
-    var workoutNameEl = $("<h4>")
+    var workoutNameEl = $("<div>")
       workoutNameEl.text(dailyWorkoutArray[i].workName)
     $("#workout").append(workoutNameEl)
   }

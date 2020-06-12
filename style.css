@@ -164,3 +164,23 @@ nav .brand-logo{
         border-radius: 5px;
         text-align: center;
       }
+      #workout{
+          font-size: 20px;
+          color: white;
+      }
+      #todayCard{
+          background-image: url("./assets/barb-img.jpg");
+          
+          background-image: width 658px;
+          background-attachment: height 400px;
+          color: white;
+          font-size: large;
+          text-align: center;
+      }
+      @media(min:width 900px){
+          #todayCard{
+              width: 300px;
+              height: 100px;
+          }
+      }
+ 
