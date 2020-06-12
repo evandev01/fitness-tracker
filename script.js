@@ -6,7 +6,7 @@
     var apiURL = "https://wger.de/api/v2/"
     // Chooses English language
     var language = "?language=2"
-    // Workouts approved by API 
+    // Workouts approved by API and example of variables
     var status = "&status=2"
     var frontBack = true
     var muscleId = 1
@@ -432,7 +432,7 @@ function addDailyWorkout(){
 
             
         //formula to calculate maintenance calories which are calories the body need in order to function properly based on the factors selected above by the user
-        var calorieIntake=(66.473+(6.23*startWeight)+(12.7*inches)-(6.8*age)*activity,(655+(4.35*+startWeight)+(4.7*inches)-(4.7*age))*activity).toFixed(2);
+        var calorieIntake= Math.floor(66.473+(6.23*startWeight)+(12.7*inches)-(6.8*age)*activity,(655+(4.35*+startWeight)+(4.7*inches)-(4.7*age))*activity);
 
 
 
@@ -730,8 +730,7 @@ $("#update-weight").on("click",function(){
   weightJournal = []
   retrieveWeightJournal()
   var entryWeight = parseInt($("#current-weight2").val())
-  var startDateInput = moment("6/6/2020","MM/DD/YYYY")
-  // var startDateInput = moment(profileInfo[0].startDate,"MM/DD/YYYY")
+  var startDateInput = moment(profileInfo[0].startDate,"MM/DD/YYYY")
   var currentDateInput = moment().format('L') ;
   var duration = moment.duration(startDateInput.diff(currentDateInput));
   var entryDayInput = duration.asDays()*-1;
