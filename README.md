@@ -48,7 +48,7 @@ Workout Section: user chooses what muscles to workout and then decides on the wo
 ![image](https://user-images.githubusercontent.com/62354759/84456533-2e17b480-ac2e-11ea-8160-5750d8a793d7.png)
 
 Dashboard section: user gets to input their current city to view weather, gets to see thier current stats including calories, start and end weight, at the bottom of the page user get to update current weight and changes will be displayed on the graph along with their goal duration time start and end weight to help user track thier goal.
-![image](https://user-images.githubusercontent.com/62354759/84456555-3e2f9400-ac2e-11ea-8229-738208452786.png)
+![image](https://user-images.githubusercontent.com/62354759/84457792-8bf9cb80-ac31-11ea-8249-9a1ab470513c.png)
 
 ![image](https://user-images.githubusercontent.com/62354759/84456572-4d164680-ac2e-11ea-8c95-32289c438f2b.png)
 
