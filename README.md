@@ -32,6 +32,8 @@ Clone this repo to your local machine using https://github.com/evandev01/fitness
 5.Usage
 *************Provide instructions and examples for use. Include screenshots as needed.*********
 
+![image](https://user-images.githubusercontent.com/63551416/84456004-e3496d00-ac2c-11ea-922d-551b532e4485.png)
+
 
 6.Credits
 Gaines Yeilding: https://github.com/gfy613
