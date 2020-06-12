@@ -432,7 +432,7 @@ function addDailyWorkout(){
 
             
         //formula to calculate maintenance calories which are calories the body need in order to function properly based on the factors selected above by the user
-        var calorieIntake=(66.473+(6.23*startWeight)+(12.7*inches)-(6.8*age)*activity,(655+(4.35*+startWeight)+(4.7*inches)-(4.7*age))*activity).toFixed(2);
+        var calorieIntake= Math.floor(66.473+(6.23*startWeight)+(12.7*inches)-(6.8*age)*activity,(655+(4.35*+startWeight)+(4.7*inches)-(4.7*age))*activity);
 
 
 
@@ -543,6 +543,9 @@ function addDailyWorkout(){
         storeCity();
         retrieveCalender();
         retrieveCalories();
+        addCalories()
+        addStartWeight()
+        addGoalWeight()
        
 
     function searchCity(city){
