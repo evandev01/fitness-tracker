@@ -1,5 +1,6 @@
 # fitness-tracker
 https://evandev01.github.io/fitness-tracker/
+
 Application for setting and tracking fitness goals.
 
 Fitness Tracker
