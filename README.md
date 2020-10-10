@@ -6,13 +6,14 @@ Application for setting and tracking fitness goals.
 Fitness Tracker
 
 1.Description
-Motivation: To help user succeed in achieving their health goals
-Help user to generate a  daily workout routine
-Allows user to set goals
-Allows user to track goal progress
-Allows user to calculate calorie intake based on current age, weight, height
-User may choose which goal path to select: gain muscle, lose weight or maintain current weight
-Allows user to save daily notes in a 7-day calendar
+Motivation: 
+* To help user succeed in achieving their health goals
+* Help user to generate a  daily workout routine
+* Allows user to set goals
+* Allows user to track goal progress
+* Allows user to calculate calorie intake based on current age, weight, height
+* User may choose which goal path to select: gain muscle, lose weight or maintain current weight
+* Allows user to save daily notes in a 7-day calendar
 
 
 2.User Story
